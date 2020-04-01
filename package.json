@@ -18,20 +18,20 @@
     "sefaz"
   ],
   "author": {
-    "name": "Guilherme Leal",
-    "email": "lealhugui@gmail.com"
+    "name": "",
+    "email": ""
   },
   "contributors": [
     {
-      "name": "Leonardo Fioravanso",
-      "email": "leonardohf28@gmail.com"
+      "name": "",
+      "email": ""
     }
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/lealhugui/node-dfe/issues"
+    "url": ""
   },
-  "homepage": "https://github.com/lealhugui/node-dfe#readme",
+  "homepage": "",
   "dependencies": {
     "@types/node": "^12.11.1",
     "cxsd": "^0.1.1",

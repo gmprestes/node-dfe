@@ -4,6 +4,7 @@ import { XmlHelper } from '../xmlHelper'
 import { RetornoProcessamento } from '../interface/nfe'
 
 
+
 export interface WebProxy {
     host: string
     port: string
@@ -18,7 +19,7 @@ function proxyToUrl(pr: WebProxy): string {
     const server = `${pr.host}:${pr.port}`
     let auth = null;
     let final = pr.isHttps ? 'https://' : 'http://'
-    if(pr.auth) {
+    if (pr.auth) {
         final = `${final}${pr.auth.username}:${pr.auth.password}@`
     }
 
@@ -34,10 +35,14 @@ export abstract class WebServiceHelper {
 
     private static httpPost(reqOpt: any) {
         return new Promise((resolve, reject) => {
-            console.log(reqOpt)
-            request.post(reqOpt, function(err: any, resp: request.Response, body: any) {
-                console.error(err)
-                if(err) {
+            console.log('REQ OPT -----> ',reqOpt)
+
+            // Isso é necessario para que os certificados loucos da sefaz nao deem erro
+            request.defaults({ rejectUnauthorized: false });
+            request.post(reqOpt, function (err: any, resp: request.Response, body: any) {
+                //console.error(err)
+                if (err) {
+                    console.log('ERRO REQ ----> ', err)
                     reject(err)
                 }
 
@@ -51,18 +56,20 @@ export abstract class WebServiceHelper {
 
     public static buildSoapEnvelope(xml: string, soapMethod: string) {
         let soapEnvelopeObj = {
-            '$': { 'xmlns:soap': 'http://www.w3.org/2003/05/soap-envelope',
-                    'xmlns:xsi': 'http://www.w3.org/2001/XMLSchema-instance',
-                    'xmlns:xsd': 'http://www.w3.org/2001/XMLSchema' },
-                'soap:Body': {
-                    'nfeDadosMsg': {
-                        '$': {
-                            'xmlns': soapMethod
-                        },
-                        _: '[XML]'
-                    }
+            '$': {
+                'xmlns:soap': 'http://www.w3.org/2003/05/soap-envelope',
+                'xmlns:xsi': 'http://www.w3.org/2001/XMLSchema-instance',
+                'xmlns:xsd': 'http://www.w3.org/2001/XMLSchema'
+            },
+            'soap:Body': {
+                'nfeDadosMsg': {
+                    '$': {
+                        'xmlns': soapMethod
+                    },
+                    _: '[XML]'
                 }
-            };
+            }
+        };
 
         let soapEnvXml = XmlHelper.serializeXml(soapEnvelopeObj, 'soap:Envelope');
         return soapEnvXml.replace('[XML]', xml);
@@ -114,11 +121,14 @@ export abstract class WebServiceHelper {
                 cert, soap, xml, proxy
             )
 
-            console.log('----->', reqOpt.url)
+            console.log('REQ URL ----->', reqOpt.url)
+
             //let res = await axios(reqOpt);
             const res = ((await this.httpPost(reqOpt)) as PostResponse);
-            console.log('----->', res.response.statusCode)
+            console.log('RESP STATUS CODE ----->', res.response.statusCode)
             result.status = res.response.statusCode;
+
+            console.log('RESP BODY ----->', res.response.statusCode)
             result.xml_recebido = res.response.body;
 
             if (result.status == 200) {
@@ -136,7 +146,7 @@ export abstract class WebServiceHelper {
             return result;
 
         } catch (err) {
-            
+
             result.success = false;
             result.error = err;
             console.log('----->', result.success)

@@ -817,14 +817,15 @@ export interface TNFeInfNFeDetImposto {
     II: any;
     IPI: any;
     ISSQN: any;
-
+    PIS: any;
+    COFINS: any;
     //items: object[]; //ICMS, II,IPI, ISSQN
 
-    pIS: TNFeInfNFeDetImpostoPIS;
+    
 
     pISST: TNFeInfNFeDetImpostoPISST;
 
-    cOFINS: TNFeInfNFeDetImpostoCOFINS;
+    
 
     cOFINSST: TNFeInfNFeDetImpostoCOFINSST;
 

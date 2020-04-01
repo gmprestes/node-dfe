@@ -1,4 +1,5 @@
-import { RetornoProcessamentoNF, Empresa, Endereco, NFCeDocumento, NFeDocumento, DocumentoFiscal, Destinatario, Transporte, Pagamento, Produto, Total,
+import {
+    RetornoProcessamentoNF, Empresa, Endereco, NFCeDocumento, NFeDocumento, DocumentoFiscal, Destinatario, Transporte, Pagamento, Produto, Total,
     InfoAdicional, DetalhesProduto, Imposto, Icms, Cofins, Pis, IcmsTot, IssqnTot, DetalhePagamento, DetalhePgtoCartao, RetornoContingenciaOffline, ResponsavelTecnico, ServicosSefaz
 } from '../interface/nfe';
 
@@ -22,11 +23,11 @@ function log(msg: string, processo?: string) {
 
 function jsonOneLevel(obj: any): string {
     const result: any = {}
-    
 
-    for(const k of Object.keys(obj)) {
+
+    for (const k of Object.keys(obj)) {
         let logStr = obj[k].toString() || "null";
-        if(logStr.length > 500) {
+        if (logStr.length > 500) {
             logStr = logStr.substring(0, 499)
         }
         result[k] = logStr
@@ -138,7 +139,7 @@ export class NFeProcessor {
         }
     }
 
-    private appendQRCodeXML(documento: NFCeDocumento, xmlAssinado: string){
+    private appendQRCodeXML(documento: NFCeDocumento, xmlAssinado: string) {
         let qrCode = null;
         let xmlAssinadoObj = XmlHelper.deserializeXml(xmlAssinado, { explicitArray: false });
 
@@ -146,7 +147,7 @@ export class NFeProcessor {
 
         if (documento.docFiscal.isContingenciaOffline) {
 
-            let diaEmissao = documento.docFiscal.dhEmissao.substring(8,10);
+            let diaEmissao = documento.docFiscal.dhEmissao.substring(8, 10);
             let valorTotal = documento.total.icmsTot.vNF;
             let digestValue = Object(xmlAssinadoObj).NFe.Signature.SignedInfo.Reference.DigestValue;
 
@@ -168,7 +169,7 @@ export class NFeProcessor {
         };
     }
 
-    public async transmitirXml(xmlLote: string, modelo: string, ambiente: string, nfeObj: Object){
+    public async transmitirXml(xmlLote: string, modelo: string, ambiente: string, nfeObj: Object) {
         let result = <RetornoProcessamentoNF>{
             success: false,
             nfe: nfeObj
@@ -194,7 +195,7 @@ export class NFeProcessor {
                 }), 'retornoEnvio.exists')
 
                 log(jsonOneLevel(retornoEnvio), 'retornoEnvio.full');
-            } catch(e) {
+            } catch (e) {
                 log(`ja deu erro pra logar.......${e.toString()}`, 'retornoEnvio')
             }
 
@@ -234,9 +235,9 @@ export class NFeProcessor {
                             retornoConsulta: !!retornoConsulta,
                             data: !retornoConsulta ? false : !!retornoConsulta.data
                         }), 'retornoConsulta.exists')
-        
+
                         log(jsonOneLevel(retornoConsulta), 'retornoConsulta.data');
-                    } catch(e) {
+                    } catch (e) {
                         log('ja deu erro pra logar.......', 'retornoConsulta')
                     }
 
@@ -262,7 +263,7 @@ export class NFeProcessor {
         return result;
     }
 
-    private async consultarProc(xml:string, cert: any) {
+    private async consultarProc(xml: string, cert: any) {
         return await WebServiceHelper.makeSoapRequest(
             xml, cert, soapRetAutorizacao, this.webProxy
         );
@@ -274,22 +275,22 @@ export class NFeProcessor {
         );
     }
 
-    private gerarXmlConsultaProc(ambiente: string, recibo: string){
-        let consulta = <schema.TConsReciNFe> {
-            $: {versao: '4.00', xmlns: 'http://www.portalfiscal.inf.br/nfe'},
+    private gerarXmlConsultaProc(ambiente: string, recibo: string) {
+        let consulta = <schema.TConsReciNFe>{
+            $: { versao: '4.00', xmlns: 'http://www.portalfiscal.inf.br/nfe' },
             tpAmb: ambiente,
             nRec: recibo
         };
         return XmlHelper.serializeXml(consulta, 'consReciNFe');
     }
 
-    private gerarXmlLote(xml: string, isAsync: boolean){
+    private gerarXmlLote(xml: string, isAsync: boolean) {
         //TODO: ajustar para receber uma lista de xmls...
 
-        let loteId = Utils.randomInt(1,999999999999999).toString();
+        let loteId = Utils.randomInt(1, 999999999999999).toString();
 
         let enviNFe = <schema.TEnviNFe>{
-            $: { versao: '4.00', xmlns: 'http://www.portalfiscal.inf.br/nfe'},
+            $: { versao: '4.00', xmlns: 'http://www.portalfiscal.inf.br/nfe' },
             idLote: loteId,
             indSinc: isAsync ? schema.TEnviNFeIndSinc.Item0 : schema.TEnviNFeIndSinc.Item1,
             _: '[XMLS]'
@@ -304,7 +305,7 @@ export class NFeProcessor {
             documento.docFiscal.tipoEmissao = '9';
 
         let dadosChave = this.gerarChaveNF(this.empresa, documento.docFiscal);
-        let NFe = <schema.TNFe> {
+        let NFe = <schema.TNFe>{
             $: {
                 xmlns: 'http://www.portalfiscal.inf.br/nfe'
             },
@@ -319,17 +320,17 @@ export class NFeProcessor {
         };
     }
 
-    private gerarChaveNF(empresa: Empresa, docFiscal: DocumentoFiscal){
+    private gerarChaveNF(empresa: Empresa, docFiscal: DocumentoFiscal) {
         let chave = '';
 
-        let ano = docFiscal.dhEmissao.substring(2,4);
-        let mes = docFiscal.dhEmissao.substring(5,7);
+        let ano = docFiscal.dhEmissao.substring(2, 4);
+        let mes = docFiscal.dhEmissao.substring(5, 7);
 
-        chave += (docFiscal.codUF.padStart(2,'0'));
+        chave += (docFiscal.codUF.padStart(2, '0'));
         chave += (ano + mes);
-        chave += (empresa.cnpj.padStart(14,'0'));
-        chave += (docFiscal.modelo.padStart(2,'0'));
-        chave += (docFiscal.serie.padStart(3,'0'));
+        chave += (empresa.cnpj.padStart(14, '0'));
+        chave += (docFiscal.modelo.padStart(2, '0'));
+        chave += (docFiscal.serie.padStart(3, '0'));
         chave += (docFiscal.numeroNota.toString().padStart(9, '0'));
         chave += (docFiscal.tipoEmissao);
 
@@ -354,18 +355,17 @@ export class NFeProcessor {
 
         let chaveArr = chave.split('');
 
-        for (let i = chaveArr.length - 1; i !== -1; i--)
-        {
+        for (let i = chaveArr.length - 1; i !== -1; i--) {
             let ch = Number(chaveArr[i].toString());
 
-            soma += ch*peso;
+            soma += ch * peso;
             if (peso < 9)
                 peso += 1;
             else
                 peso = 2;
         }
 
-        mod = soma%11;
+        mod = soma % 11;
         if (mod === 0 || mod === 1)
             dv = 0;
         else
@@ -382,7 +382,7 @@ export class NFeProcessor {
         return urlQRCode + '?p=' + concat + s + hash;
     }
 
-    private gerarQRCodeNFCeOffline(urlQRCode: string, chave: string, versaoQRCode: string, ambiente: string, diaEmissao: string, valorTotal:string, digestValue: string, idCSC: string, CSC: string) {
+    private gerarQRCodeNFCeOffline(urlQRCode: string, chave: string, versaoQRCode: string, ambiente: string, diaEmissao: string, valorTotal: string, digestValue: string, idCSC: string, CSC: string) {
         let s = '|';
         let hexDigestValue = Buffer.from(digestValue).toString('hex');
         let concat = [chave, versaoQRCode, ambiente, diaEmissao, valorTotal, hexDigestValue, Number(idCSC)].join(s);
@@ -392,7 +392,7 @@ export class NFeProcessor {
     }
 
     private gerarNFe(documento: NFeDocumento, dadosChave: any) {
-        let nfe = <schema.TNFeInfNFe> {
+        let nfe = <schema.TNFeInfNFe>{
             $: { versao: '4.00', Id: 'NFe' + dadosChave.chave }
         };
 
@@ -420,7 +420,7 @@ export class NFeProcessor {
     }
 
     private gerarNFCe(documento: NFCeDocumento, dadosChave: any) {
-        let nfce = <schema.TNFeInfNFe> {
+        let nfce = <schema.TNFeInfNFe>{
             $: { versao: '4.00', Id: 'NFe' + dadosChave.chave }
         };
 
@@ -443,7 +443,7 @@ export class NFeProcessor {
     }
 
     private getIde(documento: DocumentoFiscal, dadosChave: any) {
-        let ide = <schema.TNFeInfNFeIde> {
+        let ide = <schema.TNFeInfNFeIde>{
             cUF: Utils.getEnumByValue(schema.TCodUfIBGE, documento.codUF),
             cNF: dadosChave.cnf,
             natOp: documento.naturezaOperacao,
@@ -473,7 +473,7 @@ export class NFeProcessor {
     }
 
     private getEmit(empresa: Empresa) {
-        return <schema.TNFeInfNFeEmit> {
+        return <schema.TNFeInfNFeEmit>{
             CNPJ: empresa.cnpj,
             xNome: empresa.razaoSocial,
             xFant: empresa.nomeFantasia,
@@ -486,7 +486,7 @@ export class NFeProcessor {
         }
     }
 
-    private getEnderEmit(endereco: Endereco){
+    private getEnderEmit(endereco: Endereco) {
         return <schema.TEnderEmi>{
             xLgr: endereco.logradouro,
             nro: endereco.numero,
@@ -502,7 +502,7 @@ export class NFeProcessor {
         }
     }
 
-    private getEnderDest(endereco: Endereco){
+    private getEnderDest(endereco: Endereco) {
         return <schema.TEndereco>{
             xLgr: endereco.logradouro,
             nro: endereco.numero,
@@ -545,9 +545,9 @@ export class NFeProcessor {
     private getDet(produtos: Produto[], ambiente: string) {
         let det_list = [];
 
-        for (let i = 0; i < produtos.length; i++){
+        for (let i = 0; i < produtos.length; i++) {
             det_list.push(<schema.TNFeInfNFeDet>{
-                $: {nItem: produtos[i].numeroItem},
+                $: { nItem: produtos[i].numeroItem },
                 prod: this.getDetProd(produtos[i].prod, ambiente, i == 0),
                 imposto: this.getDetImposto(produtos[i].imposto),
                 infAdProd: produtos[i].infoAdicional
@@ -604,7 +604,8 @@ export class NFeProcessor {
             IPI: '',
             II: '',
             ISSQN: '',
-            //pis / cofins
+            PIS: this.getImpostoPIS(),
+            COFINS:this.getImpostoCOFINS()
         };
 
         return detImposto;
@@ -616,7 +617,7 @@ export class NFeProcessor {
             switch (icms.CST) {
                 case '00':
                     result = {
-                        ICMS00: <schema.TNFeInfNFeDetImpostoICMSICMS00> {
+                        ICMS00: <schema.TNFeInfNFeDetImpostoICMSICMS00>{
                             orig: icms.orig,
                             CST: icms.CST,
                             modBC: Utils.getEnumByValue(schema.TNFeInfNFeDetImpostoICMSICMS00ModBC, icms.modBC),
@@ -632,7 +633,7 @@ export class NFeProcessor {
                     // partilha icms
                     if (icms.UFST && icms.UFST !== '' && icms.pBCOp && icms.pBCOp !== '') {
                         result = {
-                            ICMS10: <schema.TNFeInfNFeDetImpostoICMSICMSPart> {
+                            ICMS10: <schema.TNFeInfNFeDetImpostoICMSICMSPart>{
                                 orig: icms.orig,
                                 CST: icms.CST,
                                 modBC: Utils.getEnumByValue(schema.TNFeInfNFeDetImpostoICMSICMSPartModBC, icms.modBC),
@@ -652,7 +653,7 @@ export class NFeProcessor {
                         }
                     } else {
                         result = {
-                            ICMS10: <schema.TNFeInfNFeDetImpostoICMSICMS10> {
+                            ICMS10: <schema.TNFeInfNFeDetImpostoICMSICMS10>{
                                 orig: icms.orig,
                                 CST: icms.CST,
                                 modBC: Utils.getEnumByValue(schema.TNFeInfNFeDetImpostoICMSICMS10ModBC, icms.modBC),
@@ -695,7 +696,7 @@ export class NFeProcessor {
                     break;
                 case '30':
                     result = {
-                        ICMS30: <schema.TNFeInfNFeDetImpostoICMSICMS30> {
+                        ICMS30: <schema.TNFeInfNFeDetImpostoICMSICMS30>{
                             orig: icms.orig,
                             CST: icms.CST,
                             modBCST: Utils.getEnumByValue(schema.TNFeInfNFeDetImpostoICMSICMS30ModBCST, icms.modBCST),
@@ -715,10 +716,10 @@ export class NFeProcessor {
                 case '40':
                 case '50':
                     result = {
-                        ICMS40: <schema.TNFeInfNFeDetImpostoICMSICMS40> {
+                        ICMS40: <schema.TNFeInfNFeDetImpostoICMSICMS40>{
                             orig: icms.orig,
                             CST: icms.CST,
-                            motDesICMS : Utils.getEnumByValue(schema.TNFeInfNFeDetImpostoICMSICMS40MotDesICMS, icms.motDesICMS),
+                            motDesICMS: Utils.getEnumByValue(schema.TNFeInfNFeDetImpostoICMSICMS40MotDesICMS, icms.motDesICMS),
                             vICMSDeson: icms.vICMSDeson
                         }
                     }
@@ -726,7 +727,7 @@ export class NFeProcessor {
                 case '41':
                     if (icms.vBCSTRet && icms.vBCSTRet !== '') {
                         result = {
-                            ICMS41: <schema.TNFeInfNFeDetImpostoICMSICMSST> {
+                            ICMS41: <schema.TNFeInfNFeDetImpostoICMSICMSST>{
                                 orig: icms.orig,
                                 CST: icms.CST,
                                 vBCSTRet: icms.vBCSTRet,
@@ -746,10 +747,10 @@ export class NFeProcessor {
                         }
                     } else {
                         result = {
-                            ICMS40: <schema.TNFeInfNFeDetImpostoICMSICMS40> {
+                            ICMS40: <schema.TNFeInfNFeDetImpostoICMSICMS40>{
                                 orig: icms.orig,
                                 CST: icms.CST,
-                                motDesICMS : Utils.getEnumByValue(schema.TNFeInfNFeDetImpostoICMSICMS40MotDesICMS, icms.motDesICMS),
+                                motDesICMS: Utils.getEnumByValue(schema.TNFeInfNFeDetImpostoICMSICMS40MotDesICMS, icms.motDesICMS),
                                 vICMSDeson: icms.vICMSDeson
                             }
                         }
@@ -757,10 +758,10 @@ export class NFeProcessor {
                     break;
                 case '51':
                     result = {
-                        ICMS51: <schema.TNFeInfNFeDetImpostoICMSICMS51> {
+                        ICMS51: <schema.TNFeInfNFeDetImpostoICMSICMS51>{
                             orig: icms.orig,
                             CST: icms.CST,
-                            modBC: Utils.getEnumByValue(schema.TNFeInfNFeDetImpostoICMSICMS51ModBC,icms.modBC),
+                            modBC: Utils.getEnumByValue(schema.TNFeInfNFeDetImpostoICMSICMS51ModBC, icms.modBC),
                             vBC: icms.vBC,
                             pRedBC: icms.pRedBC,
                             pICMS: icms.pICMS,
@@ -776,7 +777,7 @@ export class NFeProcessor {
                     break;
                 case '60':
                     result = {
-                        ICMS60: <schema.TNFeInfNFeDetImpostoICMSICMS60> {
+                        ICMS60: <schema.TNFeInfNFeDetImpostoICMSICMS60>{
                             orig: icms.orig,
                             CST: icms.CST,
                             vBCSTRet: icms.vBCSTRet,
@@ -795,7 +796,7 @@ export class NFeProcessor {
                     break;
                 case '70':
                     result = {
-                        ICMS70: <schema.TNFeInfNFeDetImpostoICMSICMS70> {
+                        ICMS70: <schema.TNFeInfNFeDetImpostoICMSICMS70>{
                             orig: icms.orig,
                             CST: icms.CST,
                             modBC: icms.modBC,
@@ -824,7 +825,7 @@ export class NFeProcessor {
                     // partilha icms
                     if (icms.UFST && icms.UFST !== '' && icms.pBCOp && icms.pBCOp !== '') {
                         result = {
-                            ICMS90: <schema.TNFeInfNFeDetImpostoICMSICMSPart> {
+                            ICMS90: <schema.TNFeInfNFeDetImpostoICMSICMSPart>{
                                 orig: icms.orig,
                                 CST: icms.CST,
                                 modBC: Utils.getEnumByValue(schema.TNFeInfNFeDetImpostoICMSICMSPartModBC, icms.modBC),
@@ -844,7 +845,7 @@ export class NFeProcessor {
                         }
                     } else {
                         result = {
-                            ICMS90: <schema.TNFeInfNFeDetImpostoICMSICMS90> {
+                            ICMS90: <schema.TNFeInfNFeDetImpostoICMSICMS90>{
                                 orig: icms.orig,
                                 CST: icms.CST,
                                 modBC: Utils.getEnumByValue(schema.TNFeInfNFeDetImpostoICMSICMS90ModBC, icms.modBC),
@@ -875,10 +876,10 @@ export class NFeProcessor {
             }
         } else {
             // Simples Nacional
-            switch(icms.CSOSN) {
+            switch (icms.CSOSN) {
                 case '101':
                     result = {
-                        ICMSSN101: <schema.TNFeInfNFeDetImpostoICMSICMSSN101> {
+                        ICMSSN101: <schema.TNFeInfNFeDetImpostoICMSICMSSN101>{
                             orig: icms.orig,
                             CSOSN: icms.CSOSN,
                             pCredSN: icms.pCredSN,
@@ -891,7 +892,7 @@ export class NFeProcessor {
                 case '300':
                 case '400':
                     result = {
-                        ICMSSN102: <schema.TNFeInfNFeDetImpostoICMSICMSSN102> {
+                        ICMSSN102: <schema.TNFeInfNFeDetImpostoICMSICMSSN102>{
                             orig: icms.orig,
                             CSOSN: icms.CSOSN
                         }
@@ -899,7 +900,7 @@ export class NFeProcessor {
                     break;
                 case '201':
                     result = {
-                        ICMSSN201: <schema.TNFeInfNFeDetImpostoICMSICMSSN201> {
+                        ICMSSN201: <schema.TNFeInfNFeDetImpostoICMSICMSSN201>{
                             orig: icms.orig,
                             CSOSN: icms.CSOSN,
                             modBCST: icms.modBCST,
@@ -919,7 +920,7 @@ export class NFeProcessor {
                 case '202':
                 case '203':
                     result = {
-                        ICMSSN202: <schema.TNFeInfNFeDetImpostoICMSICMSSN202> {
+                        ICMSSN202: <schema.TNFeInfNFeDetImpostoICMSICMSSN202>{
                             orig: icms.orig,
                             CSOSN: icms.CSOSN,
                             modBCST: icms.modBCST,
@@ -953,7 +954,7 @@ export class NFeProcessor {
                     break;
                 case '900':
                     result = {
-                        ICMSSN900: <schema.TNFeInfNFeDetImpostoICMSICMSSN900> {
+                        ICMSSN900: <schema.TNFeInfNFeDetImpostoICMSICMSSN900>{
                             orig: icms.orig,
                             CSOSN: icms.CSOSN,
                             modBC: icms.modBC,
@@ -986,7 +987,7 @@ export class NFeProcessor {
     }
 
     private getImpostoII() {
-        return <schema.TNFeInfNFeDetImpostoII> {
+        return <schema.TNFeInfNFeDetImpostoII>{
             vBC: '',
             vDespAdu: '',
             vII: '',
@@ -995,7 +996,7 @@ export class NFeProcessor {
     }
 
     private getImpostoISSQN() {
-        return <schema.TNFeInfNFeDetImpostoISSQN> {
+        return <schema.TNFeInfNFeDetImpostoISSQN>{
             vBC: '',
             vAliq: '',
             vISSQN: '',
@@ -1016,11 +1017,30 @@ export class NFeProcessor {
     }
 
     private getImpostoPIS() {
+        let result;
 
+
+
+        result = {
+            PISNT: <schema.TNFeInfNFeDetImpostoPISPISNT>{
+                CST: schema.TNFeInfNFeDetImpostoPISPISNTCST.Item06
+            }
+        }
+
+        return result;
     }
 
-    private getImpostoCOFINS() {
 
+    private getImpostoCOFINS() {
+        let result;
+
+        result = {
+            COFINSNT: <schema.TNFeInfNFeDetImpostoCOFINSCOFINSNT>{
+                CST: schema.TNFeInfNFeDetImpostoCOFINSCOFINSNTCST.Item06
+            }
+        }
+
+        return result;
     }
 
     private getTotal(total: Total) {
@@ -1059,7 +1079,7 @@ export class NFeProcessor {
         return pag;
     }
 
-    private getDetalhamentoPagamentos(pagamentos: DetalhePagamento[]){
+    private getDetalhamentoPagamentos(pagamentos: DetalhePagamento[]) {
         let listPagamentos = [];
         let detPag;
 
@@ -1121,7 +1141,7 @@ export class NFeProcessor {
     }
 
     private gerarHashCSRT(chave: string, CSRT: string) {
-        return Buffer.from(sha1(CSRT+chave), 'hex').toString('base64');
+        return Buffer.from(sha1(CSRT + chave), 'hex').toString('base64');
     }
 
 }

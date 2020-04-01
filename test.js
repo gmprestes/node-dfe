@@ -1,21 +1,23 @@
-
 const fs = require('fs');
 const lib = require('./lib');
 const signUtils = require('./lib/factory/signature');
 const XmlHelper = require('./lib/factory/xmlHelper');
 
+// @ts-ignore: Unreachable code error
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+
 let cert = {
-    key: fs.readFileSync('C:\\cert\\newKey.key'),
-    pem: fs.readFileSync('C:\\cert\\test.pem'),
-    pfx: fs.readFileSync('C:\\cert\\certificado.pfx'),
-    password: fs.readFileSync('C:\\cert\\senha.txt')
+    key: fs.readFileSync('./cert.key'),
+    pem: fs.readFileSync('./cert.pem'),
+    pfx: fs.readFileSync('./cert.pfx'),
+    password: '142536'
 };
 
 let empresa = {
+    cnpj : '31472747000176',
     razaoSocial: 'TESTE',
     nomeFantasia: 'TEST',
-    cnpj: '',
-    inscricaoEstadual: '',
+    inscricaoEstadual: '2330024201',
     inscricaoMunicipal: '',
     codRegimeTributario: '3',
     endereco: {
@@ -24,7 +26,7 @@ let empresa = {
         complemento: '',
         bairro: 'Bairro Teste',
         municipio: 'Cachoeirinha',
-        codMunicipio: '4303004',
+        codMunicipio: '4302352',
         uf: 'RS',
         cUf: '43',
         cep: '99999999',
@@ -60,7 +62,7 @@ let documento = {
     tipoDocumentoFiscal: '1',
     identificadorDestinoOperacao: '1',
     codUF: '43',
-    codIbgeFatoGerador: '4303103',
+    codIbgeFatoGerador: '4302352',
     processoEmissao: '0',
     finalidadeEmissao: '1',
     indConsumidorFinal: '1',
@@ -68,6 +70,26 @@ let documento = {
     tipoEmissao: '1',
     tipoImpressao: '4',
     versaoAplicativoEmissao: 'NODE-NFE TEST 1.0',
+};
+
+let documento2 = {
+    dhEmissao: moment().format(),
+    ambiente: '2',
+    modelo: '55',
+    numeroNota: randomInt(2, 9999),
+    serie: '20',
+    naturezaOperacao: 'VENDA',
+    tipoDocumentoFiscal: '1',
+    identificadorDestinoOperacao: '1',
+    codUF: '43',
+    codIbgeFatoGerador: '4302352',
+    processoEmissao: '0',
+    finalidadeEmissao: '1',
+    indConsumidorFinal: '1',
+    indPresenca: '1',
+    tipoEmissao: '1',
+    tipoImpressao: '1',
+    versaoAplicativoEmissao: 'GMPRESTES 1.0',
 };
 
 let dest = {
@@ -192,6 +214,16 @@ let icmsTot = {
     //vTotTrib: '0.00',
 };
 
+let nfe = {
+    docFiscal: documento2,
+    destinatario: dest,
+    produtos: produtos,
+    total: {icmsTot: icmsTot},
+    transporte: transp,
+    pagamento: pagamento,
+    infoAdicional: infoAdic
+};
+
 let nfce = {
     docFiscal: documento,
     destinatario: dest,
@@ -207,6 +239,18 @@ async function testeEmissaoNFCe() {
 
     const ini = new Date();
     let result = await nfeProc.processarDocumento(nfce);
+    const fin = new Date();
+    console.log(`${(fin.getTime() - ini.getTime())/1000}s`)
+
+    result = require('util').inspect(result, false, null);
+    console.log('Resultado Emissão NFC-e: \n\n' + result);
+}
+
+async function testeEmissaoNFe() {
+    const nfeProc = new lib.NFeProcessor(empresa, null);
+
+    const ini = new Date();
+    let result = await nfeProc.processarDocumento(nfe);
     const fin = new Date();
     console.log(`${(fin.getTime() - ini.getTime())/1000}s`)
 
@@ -280,6 +324,8 @@ function testHashRespTec(){
 //testeConsultaStatusServico(empresa, '2', '65');
 //testeDesereliaze();
 //testeEmissaoNFCe();
-testeEmissaoNFCeContingenciaOffline(empresa);
+testeEmissaoNFe();
+
+//testeEmissaoNFCeContingenciaOffline(empresa);
 //testeQRcodeNFCe();
 //testHashRespTec();
