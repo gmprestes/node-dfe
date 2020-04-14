@@ -210,8 +210,8 @@ export class NFeProcessor {
             }
 
 
-            console.log(retEnviNFe && retEnviNFe.cStat == '104' && retEnviNFe.protNFe.infProt.cStat == '100');
-            console.log(retEnviNFe && retEnviNFe.cStat == '103');
+            //console.log(retEnviNFe && retEnviNFe.cStat == '104' && retEnviNFe.protNFe.infProt.cStat == '100');
+            //console.log(retEnviNFe && retEnviNFe.cStat == '103');
 
             result.envioNF = retornoEnvio;
 

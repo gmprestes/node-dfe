@@ -35,7 +35,7 @@ export abstract class WebServiceHelper {
 
     private static httpPost(reqOpt: any) {
         return new Promise((resolve, reject) => {
-            console.log('REQ OPT -----> ',reqOpt)
+            //console.log('REQ OPT -----> ',reqOpt)
 
             // Isso é necessario para que os certificados loucos da sefaz nao deem erro
             request.defaults({ rejectUnauthorized: false });
@@ -103,7 +103,7 @@ export abstract class WebServiceHelper {
         if (proxy) {
             result.proxy = proxyToUrl(proxy)
         }
-        console.log(result)
+        //console.log(result)
         return result
     }
 
@@ -114,22 +114,29 @@ export abstract class WebServiceHelper {
         }
     }
 
-    public static async makeSoapRequest(xml: string, cert: any, soap: any, proxy?: WebProxy) {
+    public static async makeSoapRequest(xml: string, cert: any, soap: any, proxy?: WebProxy, log?: boolean) {
         let result = <RetornoProcessamento>{ xml_enviado: xml };
         try {
             const reqOpt: any = this.buildSoapRequestOpt(
                 cert, soap, xml, proxy
             )
 
-            console.log('REQ URL ----->', reqOpt.url)
+            if (log)
+                console.log('REQ OPT ----->', reqOpt)
 
             //let res = await axios(reqOpt);
             const res = ((await this.httpPost(reqOpt)) as PostResponse);
-            console.log('RESP STATUS CODE ----->', res.response.statusCode)
-            result.status = res.response.statusCode;
-
-            console.log('RESP BODY ----->', res.response.statusCode)
-            result.xml_recebido = res.response.body;
+            
+            if (log)
+                console.log('RESP STATUS CODE ----->', res.response.statusCode)
+            
+                result.status = res.response.statusCode;
+            
+            if (log)
+                console.log('RESP BODY ----->', res.response.statusCode)
+            
+            
+                result.xml_recebido = res.response.body;
 
             if (result.status == 200) {
                 result.success = true;
@@ -142,14 +149,14 @@ export abstract class WebServiceHelper {
                     //console.log(result.data)
                 }
             }
-            console.log('----->', result.success)
+            //console.log('----->', result.success)
             return result;
 
         } catch (err) {
 
             result.success = false;
             result.error = err;
-            console.log('----->', result.success)
+            console.log('ERRO ----->', result.success)
             return result;
         }
     }

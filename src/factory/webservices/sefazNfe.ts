@@ -13,6 +13,10 @@ const servicos: any = {
     'consultarStatusServico': {
         method: 'http://www.portalfiscal.inf.br/nfe/wsdl/NFeStatusServico4',
         action: 'http://www.portalfiscal.inf.br/nfe/wsdl/NFeStatusServico4/nfeStatusServicoNF'
+    },
+    'recepcaoEvento': {
+        method: 'http://www.portalfiscal.inf.br/nfe/wsdl/NFeRecepcaoEvento4',
+        action: 'http://www.portalfiscal.inf.br/nfe/wsdl/NFeRecepcaoEvento4/nfeRecepcaoEvento'
     }
 };
 
@@ -184,7 +188,13 @@ const autorizadores = {
             consultarStatusServico: {
                 url_producao: 'https://nfe.sefazrs.rs.gov.br/ws/NfeStatusServico/NfeStatusServico4.asmx',
                 url_homologacao: 'https://nfe-homologacao.sefazrs.rs.gov.br/ws/NfeStatusServico/NfeStatusServico4.asmx'
+            },
+            recepcaoEvento: {
+                url_producao: 'https://nfe.sefazrs.rs.gov.br/ws/recepcaoevento/recepcaoevento4.asmx',
+                url_homologacao: 'https://nfe-homologacao.sefazrs.rs.gov.br/ws/recepcaoevento/recepcaoevento4.asmx'
             }
+
+            
         }
     },
     'SP': {

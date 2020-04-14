@@ -2,7 +2,9 @@
 export enum ServicosSefaz {
     autorizacao = 'autorizacao',
     retAutorizacao = 'retAutorizacao',
-    consultarStatusServico = 'consultarStatusServico'
+    consultarStatusServico = 'consultarStatusServico',
+    recepcaoEvento = 'recepcaoEvento'
+
 }
 
 export interface RetornoProcessamentoNF {
