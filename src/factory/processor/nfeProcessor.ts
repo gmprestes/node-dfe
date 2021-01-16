@@ -521,24 +521,25 @@ export class NFeProcessor {
     private getDest(destinatario: Destinatario, ambiente: string) {
         let dest = <schema.TNFeInfNFeDest>{};
 
-        if (destinatario.isEstrangeiro)
-            dest.idEstrangeiro = destinatario.documento;
-        if (destinatario.documento.length == 14)
-            dest.CNPJ = destinatario.documento;
-        else
-            dest.CPF = destinatario.documento;
+        if (destinatario) {
+            if (destinatario.isEstrangeiro)
+                dest.idEstrangeiro = destinatario.documento;
+            if (destinatario.documento.length == 14)
+                dest.CNPJ = destinatario.documento;
+            else
+                dest.CPF = destinatario.documento;
 
-        dest.xNome = ambiente == '2' ? 'NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL' : destinatario.nome;
+            dest.xNome = ambiente == '2' ? 'NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL' : destinatario.nome;
 
-        if (destinatario.endereco)
-            dest.enderDest = this.getEnderDest(destinatario.endereco);
+            if (destinatario.endereco)
+                dest.enderDest = this.getEnderDest(destinatario.endereco);
 
-        dest.indIEDest = Utils.getEnumByValue(schema.TNFeInfNFeDestIndIEDest, destinatario.indicadorIEDestinario);
-        dest.IE = destinatario.inscricaoEstadual;
-        dest.ISUF = destinatario.inscricaoSuframa;
-        dest.IM = destinatario.inscricaoMunicipal;
-        dest.email = destinatario.email;
-
+            dest.indIEDest = Utils.getEnumByValue(schema.TNFeInfNFeDestIndIEDest, destinatario.indicadorIEDestinario);
+            dest.IE = destinatario.inscricaoEstadual;
+            dest.ISUF = destinatario.inscricaoSuframa;
+            dest.IM = destinatario.inscricaoMunicipal;
+            dest.email = destinatario.email;
+        }
         return dest;
     }
 
@@ -605,7 +606,7 @@ export class NFeProcessor {
             II: '',
             ISSQN: '',
             PIS: this.getImpostoPIS(),
-            COFINS:this.getImpostoCOFINS()
+            COFINS: this.getImpostoCOFINS()
         };
 
         return detImposto;

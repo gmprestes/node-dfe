@@ -7,6 +7,13 @@ const XmlHelper = require('./lib/factory/xmlHelper');
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 
 let cert = {
+    key: fs.readFileSync('./cert-papa/cert.key'),
+    pem: fs.readFileSync('./cert-papa/cert.pem'),
+    pfx: fs.readFileSync('./cert-papa/cert.pfx'),
+    password: '142536'
+};
+
+cert2 = {
     key: fs.readFileSync('./cert.key'),
     pem: fs.readFileSync('./cert.pem'),
     pfx: fs.readFileSync('./cert.pfx'),
@@ -14,9 +21,33 @@ let cert = {
 };
 
 let empresa = {
+    cnpj: '27003626000108',
+    razaoSocial: 'IN SUGAR WE TRUST LTDA ME',
+    nomeFantasia: 'GUDCAKES',
+    inscricaoEstadual: '0470024852',
+    inscricaoMunicipal: '',
+    codRegimeTributario: '1',
+    endereco: {
+        logradouro: 'RUA FREI CANECA',
+        numero: 88,
+        complemento: '',
+        bairro: 'CENTRO',
+        municipio: 'FELIZ',
+        codMunicipio: '4308102',
+        uf: 'RS',
+        cUf: '43',
+        cep: '95770000',
+        //telefone: '999999999'
+    },
+    certificado: cert,
+    idCSC: '1',
+    CSC: '6559218B-1932-4DBE-99D0-278EFA196BCB'
+};
+
+empresa = {
     cnpj: '31472747000176',
     razaoSocial: 'PAPA COMERCIO DE ALIMENTOS CONGELADOS LTDA',
-    nomeFantasia: 'PAPA PIZZA',
+    nomeFantasia: 'PAPA PIZZAS',
     inscricaoEstadual: '2330024201',
     inscricaoMunicipal: '',
     codRegimeTributario: '1',
@@ -33,7 +64,7 @@ let empresa = {
         //telefone: '999999999'
     },
     certificado: cert,
-    idCSC: '1',
+    idCSC: '0',
     CSC: ''
 };
 
@@ -52,25 +83,25 @@ function randomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-// let documento = {
-//     dhEmissao: moment().format(),
-//     ambiente: '2',
-//     modelo: '65',
-//     numeroNota: randomInt(2, 9999),
-//     serie: '20',
-//     naturezaOperacao: 'VENDA',
-//     tipoDocumentoFiscal: '1',
-//     identificadorDestinoOperacao: '1',
-//     codUF: '43',
-//     codIbgeFatoGerador: '4302352',
-//     processoEmissao: '0',
-//     finalidadeEmissao: '1',
-//     indConsumidorFinal: '1',
-//     indPresenca: '1',
-//     tipoEmissao: '1',
-//     tipoImpressao: '4',
-//     versaoAplicativoEmissao: 'NODE-NFE TEST 1.0',
-// };
+let documento = {
+    dhEmissao: moment().format(),
+    ambiente: '1',
+    modelo: '65',
+    numeroNota: 20293,//randomInt(2, 9999),
+    serie: '20',
+    naturezaOperacao: 'VENDA',
+    tipoDocumentoFiscal: '1',
+    identificadorDestinoOperacao: '1',
+    codUF: '43',
+    codIbgeFatoGerador: '4302352',
+    processoEmissao: '0',
+    finalidadeEmissao: '1',
+    indConsumidorFinal: '1',
+    indPresenca: '1',
+    tipoEmissao: '1',
+    tipoImpressao: '4',
+    versaoAplicativoEmissao: 'GMPRESTES 1.2',
+};
 
 let documento2 = {
     dhEmissao: moment().format(),
@@ -113,9 +144,36 @@ let dest = {
     }
 };
 
+let destNFCe = null;
+
+// {
+//     indicadorIEDestinario: '9',
+//     documento: '',
+//     inscricaoEstadual: '',
+//     nome: 'CONSUMIDOR NÃO IDENTIFICADO',
+//     email: '', 
+//     isEstrangeiro: false,
+    // endereco: {
+    //     logradouro: '',
+    //     numero: '',
+    //     complemento: '',
+    //     bairro: '',
+    //     municipio: '',
+    //     codMunicipio: '',
+    //     cUf: '',
+    //     uf: '',
+    //     cep: '',
+    //     telefone: ''
+    // }
+// };
+
 
 let transp = {
     modalidateFrete: '0'
+};
+
+let transpNFCe = {
+    modalidateFrete: '9'
 };
 
 let infoAdic = {
@@ -130,20 +188,20 @@ let valorTotalST = 0;
 
 produtos.push({
     prod: {
-        codigo: '4',
+        codigo: '1',
         cEAN: '7898633240015',
-        descricao: 'Pizza Calabresa',
-        cest: '1704800',
-        NCM: '19022000',
-        CFOP: '5401',
+        descricao: 'Espresso P',
+        cest: '1705100',
+        NCM: '19052090',
+        CFOP: '5101',
         unidadeComercial: 'UN',
-        quantidadeComercial: 15,
-        valorUnitarioComercial: 9.55,
-        valorTotal: 143.25,
+        quantidadeComercial: 1,
+        valorUnitarioComercial: 5,
+        valorTotal: 5,
         cEANTrib: '7898633240015',
         unidadeTributavel: 'UN',
-        quantidadeTributavel: 15,
-        valorUnitarioTributavel: 9.55,
+        quantidadeTributavel: 1,
+        valorUnitarioTributavel: 5,
         indicadorTotal: '1',
         valorFrete: '',
         valorSeguro: '',
@@ -155,14 +213,14 @@ produtos.push({
     imposto: {
         valorAproximadoTributos: 0,
         icms: {
-            CSOSN: '202',
+            CSOSN: '102',
             orig: '0',
-            modBCST: 4,
-            pMVAST: 35.73,
+            modBCST: 0,
+            pMVAST: 0,
             pRedBCST: '',
-            vBCST: 194.43,
-            pICMSST: 12,
-            vICMSST: 6.14,
+            vBCST: 0,
+            pICMSST: 0,
+            vICMSST: 0,
             vBCFCPST: '',
             pFCPST: '',
             vFCPST: ''
@@ -176,20 +234,20 @@ produtos.push({
 
 produtos.push({
     prod: {
-        codigo: '6',
-        cEAN: '7898633240084',
-        descricao: 'Pizza Bacon',
-        cest: '1704800',
-        NCM: '19022000',
-        CFOP: '5401',
+        codigo: '2',
+        cEAN: '7898633240015',
+        descricao: 'Latte P',
+        cest: '1705100',
+        NCM: '19052090',
+        CFOP: '5101',
         unidadeComercial: 'UN',
-        quantidadeComercial: 10,
-        valorUnitarioComercial: 9.55,
-        valorTotal: '95.50',
-        cEANTrib: '7898633240084',
+        quantidadeComercial: 1,
+        valorUnitarioComercial: 6,
+        valorTotal: 6,
+        cEANTrib: '7898633240015',
         unidadeTributavel: 'UN',
-        quantidadeTributavel: 10,
-        valorUnitarioTributavel: 9.55,
+        quantidadeTributavel: 1,
+        valorUnitarioTributavel: 6,
         indicadorTotal: '1',
         valorFrete: '',
         valorSeguro: '',
@@ -201,14 +259,14 @@ produtos.push({
     imposto: {
         valorAproximadoTributos: 0,
         icms: {
-            CSOSN: '202',
+            CSOSN: '102',
             orig: '0',
-            modBCST: 4,
-            pMVAST: 35.73,
+            modBCST: 0,
+            pMVAST: 0,
             pRedBCST: '',
-            vBCST: 129.62,
-            pICMSST: 12,
-            vICMSST: 4.09,
+            vBCST: 0,
+            pICMSST: 0,
+            vICMSST: 0,
             vBCFCPST: '',
             pFCPST: '',
             vFCPST: ''
@@ -222,20 +280,20 @@ produtos.push({
 
 produtos.push({
     prod: {
-        codigo: '8',
-        cEAN: '7898633240084',
-        descricao: 'Pizza Pizza Frango com Requeijao',
-        cest: '1704800',
-        NCM: '19022000',
-        CFOP: '5401',
+        codigo: '3',
+        cEAN: '7898633240015',
+        descricao: 'Cappuccino',
+        cest: '1705100',
+        NCM: '19052090',
+        CFOP: '5101',
         unidadeComercial: 'UN',
-        quantidadeComercial: 10,
-        valorUnitarioComercial: 9.55,
-        valorTotal: '95.50',
-        cEANTrib: '7898633240084',
+        quantidadeComercial: 1,
+        valorUnitarioComercial: 12,
+        valorTotal: 12,
+        cEANTrib: '7898633240015',
         unidadeTributavel: 'UN',
-        quantidadeTributavel: 10,
-        valorUnitarioTributavel: 9.55,
+        quantidadeTributavel: 1,
+        valorUnitarioTributavel: 12,
         indicadorTotal: '1',
         valorFrete: '',
         valorSeguro: '',
@@ -247,14 +305,14 @@ produtos.push({
     imposto: {
         valorAproximadoTributos: 0,
         icms: {
-            CSOSN: '202',
+            CSOSN: '102',
             orig: '0',
-            modBCST: 4,
-            pMVAST: 35.73,
+            modBCST: 0,
+            pMVAST: 0,
             pRedBCST: '',
-            vBCST: 129.62,
-            pICMSST: 12,
-            vICMSST: 4.09,
+            vBCST: 0,
+            pICMSST: 0,
+            vICMSST: 0,
             vBCFCPST: '',
             pFCPST: '',
             vFCPST: ''
@@ -268,20 +326,20 @@ produtos.push({
 
 produtos.push({
     prod: {
-        codigo: '8',
-        cEAN: '7898633240084',
-        descricao: 'Pizza Pizza Frango com Requeijao',
-        cest: '1704800',
-        NCM: '19022000',
-        CFOP: '5901',
+        codigo: '1',
+        cEAN: '7898633240015',
+        descricao: 'Assado Frango',
+        cest: '1705100',
+        NCM: '19052090',
+        CFOP: '5101',
         unidadeComercial: 'UN',
-        quantidadeComercial: 10,
-        valorUnitarioComercial: 9.55,
-        valorTotal: '95.50',
-        cEANTrib: '7898633240084',
+        quantidadeComercial: 1,
+        valorUnitarioComercial: 6,
+        valorTotal: 6,
+        cEANTrib: '7898633240015',
         unidadeTributavel: 'UN',
-        quantidadeTributavel: 10,
-        valorUnitarioTributavel: 9.55,
+        quantidadeTributavel: 1,
+        valorUnitarioTributavel: 6,
         indicadorTotal: '1',
         valorFrete: '',
         valorSeguro: '',
@@ -293,14 +351,14 @@ produtos.push({
     imposto: {
         valorAproximadoTributos: 0,
         icms: {
-            CSOSN: '202',
+            CSOSN: '102',
             orig: '0',
-            modBCST: 4,
-            pMVAST: 35.73,
+            modBCST: 0,
+            pMVAST: 0,
             pRedBCST: '',
-            vBCST: 129.62,
-            pICMSST: 12,
-            vICMSST: 4.09,
+            vBCST: 0,
+            pICMSST: 0,
+            vICMSST: 0,
             vBCFCPST: '',
             pFCPST: '',
             vFCPST: ''
@@ -308,11 +366,101 @@ produtos.push({
     },
     //infoAdicional: 'TEST',
     // numeroItem: i,
-    numeroItem: 0,
+    numeroItem: 1,
 
 });
 
+produtos.push({
+    prod: {
+        codigo: '1',
+        cEAN: '7898633240015',
+        descricao: 'Folhado Frango',
+        cest: '1705100',
+        NCM: '19052090',
+        CFOP: '5101',
+        unidadeComercial: 'UN',
+        quantidadeComercial: 1,
+        valorUnitarioComercial: 5,
+        valorTotal: 5,
+        cEANTrib: '7898633240015',
+        unidadeTributavel: 'UN',
+        quantidadeTributavel: 1,
+        valorUnitarioTributavel: 5,
+        indicadorTotal: '1',
+        valorFrete: '',
+        valorSeguro: '',
+        valorDesconto: '',
+        valorOutro: '',
+        numeroPedido: '',
+        numeroItemPedido: '',
+    },
+    imposto: {
+        valorAproximadoTributos: 0,
+        icms: {
+            CSOSN: '102',
+            orig: '0',
+            modBCST: 0,
+            pMVAST: 0,
+            pRedBCST: '',
+            vBCST: 0,
+            pICMSST: 0,
+            vICMSST: 0,
+            vBCFCPST: '',
+            pFCPST: '',
+            vFCPST: ''
+        }
+    },
+    //infoAdicional: 'TEST',
+    // numeroItem: i,
+    numeroItem: 1,
 
+});
+
+produtos.push({
+    prod: {
+        codigo: '1',
+        cEAN: '7898633240015',
+        descricao: 'Pao Queijo',
+        cest: '1705100',
+        NCM: '19052090',
+        CFOP: '5101',
+        unidadeComercial: 'UN',
+        quantidadeComercial: 1,
+        valorUnitarioComercial: 4,
+        valorTotal: 4,
+        cEANTrib: '7898633240015',
+        unidadeTributavel: 'UN',
+        quantidadeTributavel: 1,
+        valorUnitarioTributavel: 4,
+        indicadorTotal: '1',
+        valorFrete: '',
+        valorSeguro: '',
+        valorDesconto: '',
+        valorOutro: '',
+        numeroPedido: '',
+        numeroItemPedido: '',
+    },
+    imposto: {
+        valorAproximadoTributos: 0,
+        icms: {
+            CSOSN: '102',
+            orig: '0',
+            modBCST: 0,
+            pMVAST: 0,
+            pRedBCST: '',
+            vBCST: 0,
+            pICMSST: 0,
+            vICMSST: 0,
+            vBCFCPST: '',
+            pFCPST: '',
+            vFCPST: ''
+        }
+    },
+    //infoAdicional: 'TEST',
+    // numeroItem: i,
+    numeroItem: 1,
+
+});
 
 for (let i in produtos) {
     //console.log('Produto --> ', produtos[i].prod);
@@ -395,13 +543,13 @@ let nfe = {
 };
 
 let nfce = {
-    //docFiscal: documento,
-    destinatario: dest,
+    docFiscal: documento,
+    destinatario: destNFCe,
     produtos: produtos,
     total: {
         icmsTot: icmsTot
     },
-    transporte: transp,
+    transporte: transpNFCe,
     pagamento: pagamento,
     infoAdicional: infoAdic
 };
@@ -465,8 +613,8 @@ async function testeEmissaoNFCeAsync(empresa) {
     const fin = new Date();
     console.log(`${(fin.getTime() - ini.getTime())/1000}s`)
 
-    //result = require('util').inspect(result, false, null);
-    //console.log('Resultado Emissão NFC-e: \n\n' + result);
+    result = require('util').inspect(result, false, null);
+    console.log('Resultado Emissão NFC-e: \n\n' + result);
 }
 
 async function testeEmissaoNFCeContingenciaOffline(empresa) {
@@ -530,10 +678,10 @@ function testHashRespTec() {
 //testeAssinaturaXML();
 //testeConsultaStatusServico(empresa, '2', '55');
 
-testeCancelamentoNFe(empresa, '2', '55', '43200431472747000176550300000038981748744766', '143200000281849', 'Eu estou testando essa funcionalidade')
+//testeCancelamentoNFe(empresa, '1', '55', '43201231472747000176550010000030801530242100', '143200233292655', 'Pedido cadastrado erroneamente')
 
 //testeDesereliaze();
-//testeEmissaoNFCe();
+testeEmissaoNFCe();
 //testeEmissaoNFe();
 
 //testeEmissaoNFCeContingenciaOffline(empresa);
