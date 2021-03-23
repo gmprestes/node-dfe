@@ -676,9 +676,9 @@ function testHashRespTec() {
 }
 
 //testeAssinaturaXML();
-//testeConsultaStatusServico(empresa, '2', '55');
+testeConsultaStatusServico(empresa, '2', '55');
 
-testeCancelamentoNFe(empresa, '1', '55', '43210331472747000176550010000035791785644717', '143210053638820', 'Pedido amostra para fins de calculo de imposto. CANCELADO.')
+//testeCancelamentoNFe(empresa, '1', '55', '43210331472747000176550010000035791785644717', '143210053638820', 'Pedido amostra para fins de calculo de imposto. CANCELADO.')
 
 //testeDesereliaze();
 //testeEmissaoNFCe();
