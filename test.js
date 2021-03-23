@@ -39,9 +39,9 @@ let empresa = {
         cep: '95770000',
         //telefone: '999999999'
     },
-    certificado: cert,
-    idCSC: '1',
-    CSC: '6559218B-1932-4DBE-99D0-278EFA196BCB'
+    certificado: cert2,
+    idCSC: '2',
+    CSC: '7AEC8936-CEDC-4B38-A95E-413FA081538F'
 };
 
 empresa = {
@@ -678,10 +678,10 @@ function testHashRespTec() {
 //testeAssinaturaXML();
 //testeConsultaStatusServico(empresa, '2', '55');
 
-//testeCancelamentoNFe(empresa, '1', '55', '43201231472747000176550010000030801530242100', '143200233292655', 'Pedido cadastrado erroneamente')
+testeCancelamentoNFe(empresa, '1', '55', '43210331472747000176550010000035791785644717', '143210053638820', 'Pedido amostra para fins de calculo de imposto. CANCELADO.')
 
 //testeDesereliaze();
-testeEmissaoNFCe();
+//testeEmissaoNFCe();
 //testeEmissaoNFe();
 
 //testeEmissaoNFCeContingenciaOffline(empresa);
