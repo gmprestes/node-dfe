@@ -44,7 +44,7 @@ let empresa = {
     CSC: '7AEC8936-CEDC-4B38-A95E-413FA081538F'
 };
 
-empresa = {
+empresa2 = {
     cnpj: '31472747000176',
     razaoSocial: 'PAPA COMERCIO DE ALIMENTOS CONGELADOS LTDA',
     nomeFantasia: 'PAPA PIZZAS',
@@ -676,9 +676,9 @@ function testHashRespTec() {
 }
 
 //testeAssinaturaXML();
-testeConsultaStatusServico(empresa, '2', '55');
+testeConsultaStatusServico(empresa, '2', '65');
 
-//testeCancelamentoNFe(empresa, '1', '55', '43210331472747000176550010000035791785644717', '143210053638820', 'Pedido amostra para fins de calculo de imposto. CANCELADO.')
+testeCancelamentoNFe(empresa2, '1', '55', '43210431472747000176550010000036911672310752', '143210072288942', 'Pedido faturado erroneamente. CANCELADO.')
 
 //testeDesereliaze();
 //testeEmissaoNFCe();
