@@ -132,6 +132,10 @@
             "consultarStatusServico": {
                 "url_producao": "https://nfce.sefazrs.rs.gov.br/ws/NfeStatusServico/NfeStatusServico4.asmx",
                 "url_homologacao": "https://nfce-homologacao.sefazrs.rs.gov.br/ws/NfeStatusServico/NfeStatusServico4.asmx?wsdl"
+            },
+            "recepcaoEvento": {
+                "url_producao": "https://nfce.sefazrs.rs.gov.br/ws/recepcaoevento/recepcaoevento.asmx",
+                "url_homologacao": "https://nfce-homologacao.sefazrs.rs.gov.br/ws/recepcaoevento/recepcaoevento.asmx?wsdl"
             }
         }
     },
@@ -146,7 +150,7 @@
                 "url_producao": "https://nfce.svrs.rs.gov.br/ws/NfeRetAutorizacao/NFeRetAutorizacao4.asmx",
                 "url_homologacao": "https://nfce-homologacao.svrs.rs.gov.br/ws/NfeRetAutorizacao/NFeRetAutorizacao4.asmx"
             },
-            "consultarStatusServico": {
+            "recepcaoEvento": {
                 "url_producao": "https://nfce.svrs.rs.gov.br/ws/NfeStatusServico/NfeStatusServico4.asmx",
                 "url_homologacao": "https://nfce-homologacao.svrs.rs.gov.br/ws/NfeStatusServico/NfeStatusServico4.asmx"
             }
