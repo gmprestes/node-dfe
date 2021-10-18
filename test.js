@@ -87,7 +87,7 @@ let documento = {
     dhEmissao: moment().format(),
     ambiente: '1',
     modelo: '65',
-    numeroNota: 20293,//randomInt(2, 9999),
+    numeroNota: 20294,//randomInt(2, 9999),
     serie: '20',
     naturezaOperacao: 'VENDA',
     tipoDocumentoFiscal: '1',
@@ -144,16 +144,16 @@ let dest = {
     }
 };
 
-let destNFCe = null;
-
-// {
-//     indicadorIEDestinario: '9',
-//     documento: '',
-//     inscricaoEstadual: '',
-//     nome: 'CONSUMIDOR NÃO IDENTIFICADO',
-//     email: '', 
-//     isEstrangeiro: false,
-    // endereco: {
+let destNFCe =
+{
+    indicadorIEDestinario: '9',
+    documento: '97685640082',
+    // inscricaoEstadual: '',
+    nome: 'Fabio Oliveira dos Santos',
+    // email: '',
+    // isEstrangeiro: false,
+    endereco: null,
+    //  {
     //     logradouro: '',
     //     numero: '',
     //     complemento: '',
@@ -165,7 +165,7 @@ let destNFCe = null;
     //     cep: '',
     //     telefone: ''
     // }
-// };
+};
 
 
 let transp = {
@@ -190,18 +190,18 @@ produtos.push({
     prod: {
         codigo: '1',
         cEAN: '7898633240015',
-        descricao: 'Espresso P',
+        descricao: 'Latte G',
         cest: '1705100',
         NCM: '19052090',
         CFOP: '5101',
         unidadeComercial: 'UN',
         quantidadeComercial: 1,
-        valorUnitarioComercial: 5,
-        valorTotal: 5,
+        valorUnitarioComercial: 8,
+        valorTotal: 8,
         cEANTrib: '7898633240015',
         unidadeTributavel: 'UN',
         quantidadeTributavel: 1,
-        valorUnitarioTributavel: 5,
+        valorUnitarioTributavel: 8,
         indicadorTotal: '1',
         valorFrete: '',
         valorSeguro: '',
@@ -236,145 +236,7 @@ produtos.push({
     prod: {
         codigo: '2',
         cEAN: '7898633240015',
-        descricao: 'Latte P',
-        cest: '1705100',
-        NCM: '19052090',
-        CFOP: '5101',
-        unidadeComercial: 'UN',
-        quantidadeComercial: 1,
-        valorUnitarioComercial: 6,
-        valorTotal: 6,
-        cEANTrib: '7898633240015',
-        unidadeTributavel: 'UN',
-        quantidadeTributavel: 1,
-        valorUnitarioTributavel: 6,
-        indicadorTotal: '1',
-        valorFrete: '',
-        valorSeguro: '',
-        valorDesconto: '',
-        valorOutro: '',
-        numeroPedido: '',
-        numeroItemPedido: '',
-    },
-    imposto: {
-        valorAproximadoTributos: 0,
-        icms: {
-            CSOSN: '102',
-            orig: '0',
-            modBCST: 0,
-            pMVAST: 0,
-            pRedBCST: '',
-            vBCST: 0,
-            pICMSST: 0,
-            vICMSST: 0,
-            vBCFCPST: '',
-            pFCPST: '',
-            vFCPST: ''
-        }
-    },
-    //infoAdicional: 'TEST',
-    // numeroItem: i,
-    numeroItem: 2,
-
-});
-
-produtos.push({
-    prod: {
-        codigo: '3',
-        cEAN: '7898633240015',
-        descricao: 'Cappuccino',
-        cest: '1705100',
-        NCM: '19052090',
-        CFOP: '5101',
-        unidadeComercial: 'UN',
-        quantidadeComercial: 1,
-        valorUnitarioComercial: 12,
-        valorTotal: 12,
-        cEANTrib: '7898633240015',
-        unidadeTributavel: 'UN',
-        quantidadeTributavel: 1,
-        valorUnitarioTributavel: 12,
-        indicadorTotal: '1',
-        valorFrete: '',
-        valorSeguro: '',
-        valorDesconto: '',
-        valorOutro: '',
-        numeroPedido: '',
-        numeroItemPedido: '',
-    },
-    imposto: {
-        valorAproximadoTributos: 0,
-        icms: {
-            CSOSN: '102',
-            orig: '0',
-            modBCST: 0,
-            pMVAST: 0,
-            pRedBCST: '',
-            vBCST: 0,
-            pICMSST: 0,
-            vICMSST: 0,
-            vBCFCPST: '',
-            pFCPST: '',
-            vFCPST: ''
-        }
-    },
-    //infoAdicional: 'TEST',
-    // numeroItem: i,
-    numeroItem: 3,
-
-});
-
-produtos.push({
-    prod: {
-        codigo: '1',
-        cEAN: '7898633240015',
-        descricao: 'Assado Frango',
-        cest: '1705100',
-        NCM: '19052090',
-        CFOP: '5101',
-        unidadeComercial: 'UN',
-        quantidadeComercial: 1,
-        valorUnitarioComercial: 6,
-        valorTotal: 6,
-        cEANTrib: '7898633240015',
-        unidadeTributavel: 'UN',
-        quantidadeTributavel: 1,
-        valorUnitarioTributavel: 6,
-        indicadorTotal: '1',
-        valorFrete: '',
-        valorSeguro: '',
-        valorDesconto: '',
-        valorOutro: '',
-        numeroPedido: '',
-        numeroItemPedido: '',
-    },
-    imposto: {
-        valorAproximadoTributos: 0,
-        icms: {
-            CSOSN: '102',
-            orig: '0',
-            modBCST: 0,
-            pMVAST: 0,
-            pRedBCST: '',
-            vBCST: 0,
-            pICMSST: 0,
-            vICMSST: 0,
-            vBCFCPST: '',
-            pFCPST: '',
-            vFCPST: ''
-        }
-    },
-    //infoAdicional: 'TEST',
-    // numeroItem: i,
-    numeroItem: 1,
-
-});
-
-produtos.push({
-    prod: {
-        codigo: '1',
-        cEAN: '7898633240015',
-        descricao: 'Folhado Frango',
+        descricao: 'Pao de Queijo',
         cest: '1705100',
         NCM: '19052090',
         CFOP: '5101',
@@ -412,7 +274,53 @@ produtos.push({
     },
     //infoAdicional: 'TEST',
     // numeroItem: i,
-    numeroItem: 1,
+    numeroItem: 2,
+
+});
+
+produtos.push({
+    prod: {
+        codigo: '3',
+        cEAN: '7898633240015',
+        descricao: 'Coxinha',
+        cest: '1705100',
+        NCM: '19052090',
+        CFOP: '5101',
+        unidadeComercial: 'UN',
+        quantidadeComercial: 1,
+        valorUnitarioComercial: 6,
+        valorTotal: 6,
+        cEANTrib: '7898633240015',
+        unidadeTributavel: 'UN',
+        quantidadeTributavel: 1,
+        valorUnitarioTributavel: 6,
+        indicadorTotal: '1',
+        valorFrete: '',
+        valorSeguro: '',
+        valorDesconto: '',
+        valorOutro: '',
+        numeroPedido: '',
+        numeroItemPedido: '',
+    },
+    imposto: {
+        valorAproximadoTributos: 0,
+        icms: {
+            CSOSN: '102',
+            orig: '0',
+            modBCST: 0,
+            pMVAST: 0,
+            pRedBCST: '',
+            vBCST: 0,
+            pICMSST: 0,
+            vICMSST: 0,
+            vBCFCPST: '',
+            pFCPST: '',
+            vFCPST: ''
+        }
+    },
+    //infoAdicional: 'TEST',
+    // numeroItem: i,
+    numeroItem: 3,
 
 });
 
@@ -420,18 +328,18 @@ produtos.push({
     prod: {
         codigo: '1',
         cEAN: '7898633240015',
-        descricao: 'Pao Queijo',
+        descricao: 'Cappuccino',
         cest: '1705100',
         NCM: '19052090',
         CFOP: '5101',
         unidadeComercial: 'UN',
         quantidadeComercial: 1,
-        valorUnitarioComercial: 4,
-        valorTotal: 4,
+        valorUnitarioComercial: 9.99,
+        valorTotal: 9.99,
         cEANTrib: '7898633240015',
         unidadeTributavel: 'UN',
         quantidadeTributavel: 1,
-        valorUnitarioTributavel: 4,
+        valorUnitarioTributavel: 9.99,
         indicadorTotal: '1',
         valorFrete: '',
         valorSeguro: '',
@@ -461,6 +369,98 @@ produtos.push({
     numeroItem: 1,
 
 });
+
+produtos.push({
+    prod: {
+        codigo: '1',
+        cEAN: '7898633240015',
+        descricao: 'Sanduiche de Croissant',
+        cest: '1705100',
+        NCM: '19052090',
+        CFOP: '5101',
+        unidadeComercial: 'UN',
+        quantidadeComercial: 1,
+        valorUnitarioComercial: '16.90',
+        valorTotal: '16.90',
+        cEANTrib: '7898633240015',
+        unidadeTributavel: 'UN',
+        quantidadeTributavel: 1,
+        valorUnitarioTributavel: '16.90',
+        indicadorTotal: '1',
+        valorFrete: '',
+        valorSeguro: '',
+        valorDesconto: '',
+        valorOutro: '',
+        numeroPedido: '',
+        numeroItemPedido: '',
+    },
+    imposto: {
+        valorAproximadoTributos: 0,
+        icms: {
+            CSOSN: '102',
+            orig: '0',
+            modBCST: 0,
+            pMVAST: 0,
+            pRedBCST: '',
+            vBCST: 0,
+            pICMSST: 0,
+            vICMSST: 0,
+            vBCFCPST: '',
+            pFCPST: '',
+            vFCPST: ''
+        }
+    },
+    //infoAdicional: 'TEST',
+    // numeroItem: i,
+    numeroItem: 1,
+
+});
+
+// produtos.push({
+//     prod: {
+//         codigo: '1',
+//         cEAN: '7898633240015',
+//         descricao: 'Pao Queijo',
+//         cest: '1705100',
+//         NCM: '19052090',
+//         CFOP: '5101',
+//         unidadeComercial: 'UN',
+//         quantidadeComercial: 1,
+//         valorUnitarioComercial: 4,
+//         valorTotal: 4,
+//         cEANTrib: '7898633240015',
+//         unidadeTributavel: 'UN',
+//         quantidadeTributavel: 1,
+//         valorUnitarioTributavel: 4,
+//         indicadorTotal: '1',
+//         valorFrete: '',
+//         valorSeguro: '',
+//         valorDesconto: '',
+//         valorOutro: '',
+//         numeroPedido: '',
+//         numeroItemPedido: '',
+//     },
+//     imposto: {
+//         valorAproximadoTributos: 0,
+//         icms: {
+//             CSOSN: '102',
+//             orig: '0',
+//             modBCST: 0,
+//             pMVAST: 0,
+//             pRedBCST: '',
+//             vBCST: 0,
+//             pICMSST: 0,
+//             vICMSST: 0,
+//             vBCFCPST: '',
+//             pFCPST: '',
+//             vFCPST: ''
+//         }
+//     },
+//     //infoAdicional: 'TEST',
+//     // numeroItem: i,
+//     numeroItem: 1,
+
+// });
 
 for (let i in produtos) {
     //console.log('Produto --> ', produtos[i].prod);
@@ -560,7 +560,7 @@ async function testeEmissaoNFCe() {
     const ini = new Date();
     let result = await nfeProc.processarDocumento(nfce);
     const fin = new Date();
-    console.log(`${(fin.getTime() - ini.getTime())/1000}s`)
+    console.log(`${(fin.getTime() - ini.getTime()) / 1000}s`)
 
     result = require('util').inspect(result, false, null);
     console.log('Resultado Emissão NFC-e: \n\n' + result);
@@ -611,7 +611,7 @@ async function testeEmissaoNFCeAsync(empresa) {
     const ini = new Date();
     let result = await nfeProc.processarDocumentoAsync(nfce);
     const fin = new Date();
-    console.log(`${(fin.getTime() - ini.getTime())/1000}s`)
+    console.log(`${(fin.getTime() - ini.getTime()) / 1000}s`)
 
     result = require('util').inspect(result, false, null);
     console.log('Resultado Emissão NFC-e: \n\n' + result);
@@ -676,12 +676,12 @@ function testHashRespTec() {
 }
 
 //testeAssinaturaXML();
-testeConsultaStatusServico(empresa, '2', '65');
+//testeConsultaStatusServico(empresa, '2', '65');
 
-testeCancelamentoNFe(empresa2, '1', '55', '43210431472747000176550010000036911672310752', '143210072288942', 'Pedido faturado erroneamente. CANCELADO.')
+//testeCancelamentoNFe(empresa2, '1', '55', '43211031472747000176550010000048721568051299', '143210209719959', 'Pedido faturado erroneamente. CANCELADO.')
 
 //testeDesereliaze();
-//testeEmissaoNFCe();
+testeEmissaoNFCe();
 //testeEmissaoNFe();
 
 //testeEmissaoNFCeContingenciaOffline(empresa);

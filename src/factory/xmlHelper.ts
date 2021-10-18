@@ -3,9 +3,13 @@ import * as xml2js from 'xml2js';
 export abstract class XmlHelper {
 
     public static serializeXml(obj: any, rootTag: string) {
+        
         let builder = new xml2js.Builder({
             rootName: rootTag,
-            explicitArray: false,
+            // @ts-ignore
+            explicitArray: false,    // aqui da um erro no TS ao compilar
+            //Object literal may only specify known properties, and 'explicitArray' does not exist in type 'BuilderOptions'.
+            
             headless: true,
             renderOpts: {
                 pretty: false
