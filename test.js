@@ -87,7 +87,7 @@ let documento = {
     dhEmissao: moment().format(),
     ambiente: '1',
     modelo: '65',
-    numeroNota: 20294,//randomInt(2, 9999),
+    numeroNota: 20310,//randomInt(2, 9999),
     serie: '20',
     naturezaOperacao: 'VENDA',
     tipoDocumentoFiscal: '1',
@@ -144,28 +144,28 @@ let dest = {
     }
 };
 
-let destNFCe =
-{
-    indicadorIEDestinario: '9',
-    documento: '97685640082',
-    // inscricaoEstadual: '',
-    nome: 'Fabio Oliveira dos Santos',
-    // email: '',
-    // isEstrangeiro: false,
-    endereco: null,
-    //  {
-    //     logradouro: '',
-    //     numero: '',
-    //     complemento: '',
-    //     bairro: '',
-    //     municipio: '',
-    //     codMunicipio: '',
-    //     cUf: '',
-    //     uf: '',
-    //     cep: '',
-    //     telefone: ''
-    // }
-};
+let destNFCe =  null;
+// {
+//     indicadorIEDestinario: '9',
+//     documento: '97685640082',
+//     // inscricaoEstadual: '',
+//     nome: 'Fabio Oliveira dos Santos',
+//     // email: '',
+//     // isEstrangeiro: false,
+//     endereco: null,
+//     //  {
+//     //     logradouro: '',
+//     //     numero: '',
+//     //     complemento: '',
+//     //     bairro: '',
+//     //     municipio: '',
+//     //     codMunicipio: '',
+//     //     cUf: '',
+//     //     uf: '',
+//     //     cep: '',
+//     //     telefone: ''
+//     // }
+// };
 
 
 let transp = {
@@ -188,66 +188,20 @@ let valorTotalST = 0;
 
 produtos.push({
     prod: {
-        codigo: '1',
-        cEAN: '7898633240015',
-        descricao: 'Latte G',
-        cest: '1705100',
-        NCM: '19052090',
-        CFOP: '5101',
-        unidadeComercial: 'UN',
-        quantidadeComercial: 1,
-        valorUnitarioComercial: 8,
-        valorTotal: 8,
-        cEANTrib: '7898633240015',
-        unidadeTributavel: 'UN',
-        quantidadeTributavel: 1,
-        valorUnitarioTributavel: 8,
-        indicadorTotal: '1',
-        valorFrete: '',
-        valorSeguro: '',
-        valorDesconto: '',
-        valorOutro: '',
-        numeroPedido: '',
-        numeroItemPedido: '',
-    },
-    imposto: {
-        valorAproximadoTributos: 0,
-        icms: {
-            CSOSN: '102',
-            orig: '0',
-            modBCST: 0,
-            pMVAST: 0,
-            pRedBCST: '',
-            vBCST: 0,
-            pICMSST: 0,
-            vICMSST: 0,
-            vBCFCPST: '',
-            pFCPST: '',
-            vFCPST: ''
-        }
-    },
-    //infoAdicional: 'TEST',
-    // numeroItem: i,
-    numeroItem: 1,
-
-});
-
-produtos.push({
-    prod: {
         codigo: '2',
         cEAN: '7898633240015',
-        descricao: 'Pao de Queijo',
+        descricao: 'Misto Quente Pizza',
         cest: '1705100',
         NCM: '19052090',
         CFOP: '5101',
         unidadeComercial: 'UN',
         quantidadeComercial: 1,
-        valorUnitarioComercial: 5,
-        valorTotal: 5,
+        valorUnitarioComercial: 14,
+        valorTotal: 14,
         cEANTrib: '7898633240015',
         unidadeTributavel: 'UN',
         quantidadeTributavel: 1,
-        valorUnitarioTributavel: 5,
+        valorUnitarioTributavel: 14,
         indicadorTotal: '1',
         valorFrete: '',
         valorSeguro: '',
@@ -282,7 +236,7 @@ produtos.push({
     prod: {
         codigo: '3',
         cEAN: '7898633240015',
-        descricao: 'Coxinha',
+        descricao: 'Espresso G',
         cest: '1705100',
         NCM: '19052090',
         CFOP: '5101',
@@ -328,18 +282,18 @@ produtos.push({
     prod: {
         codigo: '1',
         cEAN: '7898633240015',
-        descricao: 'Cappuccino',
+        descricao: 'Bolo Gudcakes',
         cest: '1705100',
         NCM: '19052090',
         CFOP: '5101',
         unidadeComercial: 'UN',
         quantidadeComercial: 1,
-        valorUnitarioComercial: 9.99,
-        valorTotal: 9.99,
+        valorUnitarioComercial: 8,
+        valorTotal: 8,
         cEANTrib: '7898633240015',
         unidadeTributavel: 'UN',
         quantidadeTributavel: 1,
-        valorUnitarioTributavel: 9.99,
+        valorUnitarioTributavel: 8,
         indicadorTotal: '1',
         valorFrete: '',
         valorSeguro: '',
@@ -370,51 +324,97 @@ produtos.push({
 
 });
 
-produtos.push({
-    prod: {
-        codigo: '1',
-        cEAN: '7898633240015',
-        descricao: 'Sanduiche de Croissant',
-        cest: '1705100',
-        NCM: '19052090',
-        CFOP: '5101',
-        unidadeComercial: 'UN',
-        quantidadeComercial: 1,
-        valorUnitarioComercial: '16.90',
-        valorTotal: '16.90',
-        cEANTrib: '7898633240015',
-        unidadeTributavel: 'UN',
-        quantidadeTributavel: 1,
-        valorUnitarioTributavel: '16.90',
-        indicadorTotal: '1',
-        valorFrete: '',
-        valorSeguro: '',
-        valorDesconto: '',
-        valorOutro: '',
-        numeroPedido: '',
-        numeroItemPedido: '',
-    },
-    imposto: {
-        valorAproximadoTributos: 0,
-        icms: {
-            CSOSN: '102',
-            orig: '0',
-            modBCST: 0,
-            pMVAST: 0,
-            pRedBCST: '',
-            vBCST: 0,
-            pICMSST: 0,
-            vICMSST: 0,
-            vBCFCPST: '',
-            pFCPST: '',
-            vFCPST: ''
-        }
-    },
-    //infoAdicional: 'TEST',
-    // numeroItem: i,
-    numeroItem: 1,
+// produtos.push({
+//     prod: {
+//         codigo: '1',
+//         cEAN: '7898633240015',
+//         descricao: 'Brownie Fatia',
+//         cest: '1705100',
+//         NCM: '19052090',
+//         CFOP: '5101',
+//         unidadeComercial: 'UN',
+//         quantidadeComercial: 1,
+//         valorUnitarioComercial: 12,
+//         valorTotal: 12,
+//         cEANTrib: '7898633240015',
+//         unidadeTributavel: 'UN',
+//         quantidadeTributavel: 1,
+//         valorUnitarioTributavel: 12,
+//         indicadorTotal: '1',
+//         valorFrete: '',
+//         valorSeguro: '',
+//         valorDesconto: '',
+//         valorOutro: '',
+//         numeroPedido: '',
+//         numeroItemPedido: '',
+//     },
+//     imposto: {
+//         valorAproximadoTributos: 0,
+//         icms: {
+//             CSOSN: '102',
+//             orig: '0',
+//             modBCST: 0,
+//             pMVAST: 0,
+//             pRedBCST: '',
+//             vBCST: 0,
+//             pICMSST: 0,
+//             vICMSST: 0,
+//             vBCFCPST: '',
+//             pFCPST: '',
+//             vFCPST: ''
+//         }
+//     },
+//     //infoAdicional: 'TEST',
+//     // numeroItem: i,
+//     numeroItem: 1,
 
-});
+// });
+
+// produtos.push({
+//     prod: {
+//         codigo: '1',
+//         cEAN: '7898633240015',
+//         descricao: 'Cupcake',
+//         cest: '1705100',
+//         NCM: '19052090',
+//         CFOP: '5101',
+//         unidadeComercial: 'UN',
+//         quantidadeComercial: 1,
+//         valorUnitarioComercial: 8,
+//         valorTotal: 8,
+//         cEANTrib: '7898633240015',
+//         unidadeTributavel: 'UN',
+//         quantidadeTributavel: 1,
+//         valorUnitarioTributavel: 8,
+//         indicadorTotal: '1',
+//         valorFrete: '',
+//         valorSeguro: '',
+//         valorDesconto: '',
+//         valorOutro: '',
+//         numeroPedido: '',
+//         numeroItemPedido: '',
+//     },
+//     imposto: {
+//         valorAproximadoTributos: 0,
+//         icms: {
+//             CSOSN: '102',
+//             orig: '0',
+//             modBCST: 0,
+//             pMVAST: 0,
+//             pRedBCST: '',
+//             vBCST: 0,
+//             pICMSST: 0,
+//             vICMSST: 0,
+//             vBCFCPST: '',
+//             pFCPST: '',
+//             vFCPST: ''
+//         }
+//     },
+//     //infoAdicional: 'TEST',
+//     // numeroItem: i,
+//     numeroItem: 1,
+
+// });
 
 // produtos.push({
 //     prod: {
