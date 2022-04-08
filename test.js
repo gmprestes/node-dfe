@@ -87,7 +87,7 @@ let documento = {
     dhEmissao: moment().format(),
     ambiente: '1',
     modelo: '65',
-    numeroNota: 20310,//randomInt(2, 9999),
+    numeroNota: 20312,//randomInt(2, 9999),
     serie: '20',
     naturezaOperacao: 'VENDA',
     tipoDocumentoFiscal: '1',
@@ -144,28 +144,28 @@ let dest = {
     }
 };
 
-let destNFCe =  null;
-// {
-//     indicadorIEDestinario: '9',
-//     documento: '97685640082',
-//     // inscricaoEstadual: '',
-//     nome: 'Fabio Oliveira dos Santos',
-//     // email: '',
-//     // isEstrangeiro: false,
-//     endereco: null,
-//     //  {
-//     //     logradouro: '',
-//     //     numero: '',
-//     //     complemento: '',
-//     //     bairro: '',
-//     //     municipio: '',
-//     //     codMunicipio: '',
-//     //     cUf: '',
-//     //     uf: '',
-//     //     cep: '',
-//     //     telefone: ''
-//     // }
-// };
+let destNFCe =  
+{
+    indicadorIEDestinario: '9',
+    documento: '01123695024',
+    // inscricaoEstadual: '',
+    //nome: 'Fabio Oliveira dos Santos',
+    // email: '',
+    // isEstrangeiro: false,
+    endereco: null,
+    //  {
+    //     logradouro: '',
+    //     numero: '',
+    //     complemento: '',
+    //     bairro: '',
+    //     municipio: '',
+    //     codMunicipio: '',
+    //     cUf: '',
+    //     uf: '',
+    //     cep: '',
+    //     telefone: ''
+    // }
+};
 
 
 let transp = {
@@ -190,18 +190,18 @@ produtos.push({
     prod: {
         codigo: '2',
         cEAN: '7898633240015',
-        descricao: 'Misto Quente Pizza',
+        descricao: 'Pao de Queijo',
         cest: '1705100',
         NCM: '19052090',
         CFOP: '5101',
         unidadeComercial: 'UN',
-        quantidadeComercial: 1,
-        valorUnitarioComercial: 14,
-        valorTotal: 14,
+        quantidadeComercial: 2,
+        valorUnitarioComercial: 5,
+        valorTotal: 10,
         cEANTrib: '7898633240015',
         unidadeTributavel: 'UN',
-        quantidadeTributavel: 1,
-        valorUnitarioTributavel: 14,
+        quantidadeTributavel: 2,
+        valorUnitarioTributavel: 5,
         indicadorTotal: '1',
         valorFrete: '',
         valorSeguro: '',
@@ -236,7 +236,99 @@ produtos.push({
     prod: {
         codigo: '3',
         cEAN: '7898633240015',
-        descricao: 'Espresso G',
+        descricao: 'Soda Italiana Morango',
+        cest: '1705100',
+        NCM: '19052090',
+        CFOP: '5101',
+        unidadeComercial: 'UN',
+        quantidadeComercial: 2,
+        valorUnitarioComercial: 12,
+        valorTotal: 24,
+        cEANTrib: '7898633240015',
+        unidadeTributavel: 'UN',
+        quantidadeTributavel: 2,
+        valorUnitarioTributavel: 12,
+        indicadorTotal: '1',
+        valorFrete: '',
+        valorSeguro: '',
+        valorDesconto: '',
+        valorOutro: '',
+        numeroPedido: '',
+        numeroItemPedido: '',
+    },
+    imposto: {
+        valorAproximadoTributos: 0,
+        icms: {
+            CSOSN: '102',
+            orig: '0',
+            modBCST: 0,
+            pMVAST: 0,
+            pRedBCST: '',
+            vBCST: 0,
+            pICMSST: 0,
+            vICMSST: 0,
+            vBCFCPST: '',
+            pFCPST: '',
+            vFCPST: ''
+        }
+    },
+    //infoAdicional: 'TEST',
+    // numeroItem: i,
+    numeroItem: 3,
+
+});
+
+produtos.push({
+    prod: {
+        codigo: '1',
+        cEAN: '7898633240015',
+        descricao: 'Cappuccino',
+        cest: '1705100',
+        NCM: '19052090',
+        CFOP: '5101',
+        unidadeComercial: 'UN',
+        quantidadeComercial: 1,
+        valorUnitarioComercial: 12,
+        valorTotal: 12,
+        cEANTrib: '7898633240015',
+        unidadeTributavel: 'UN',
+        quantidadeTributavel: 1,
+        valorUnitarioTributavel: 12,
+        indicadorTotal: '1',
+        valorFrete: '',
+        valorSeguro: '',
+        valorDesconto: '',
+        valorOutro: '',
+        numeroPedido: '',
+        numeroItemPedido: '',
+    },
+    imposto: {
+        valorAproximadoTributos: 0,
+        icms: {
+            CSOSN: '102',
+            orig: '0',
+            modBCST: 0,
+            pMVAST: 0,
+            pRedBCST: '',
+            vBCST: 0,
+            pICMSST: 0,
+            vICMSST: 0,
+            vBCFCPST: '',
+            pFCPST: '',
+            vFCPST: ''
+        }
+    },
+    //infoAdicional: 'TEST',
+    // numeroItem: i,
+    numeroItem: 1,
+
+});
+
+produtos.push({
+    prod: {
+        codigo: '1',
+        cEAN: '7898633240015',
+        descricao: 'Suco Degrade',
         cest: '1705100',
         NCM: '19052090',
         CFOP: '5101',
@@ -274,7 +366,7 @@ produtos.push({
     },
     //infoAdicional: 'TEST',
     // numeroItem: i,
-    numeroItem: 3,
+    numeroItem: 1,
 
 });
 
@@ -282,18 +374,18 @@ produtos.push({
     prod: {
         codigo: '1',
         cEAN: '7898633240015',
-        descricao: 'Bolo Gudcakes',
+        descricao: 'Assado Frango',
         cest: '1705100',
         NCM: '19052090',
         CFOP: '5101',
         unidadeComercial: 'UN',
         quantidadeComercial: 1,
-        valorUnitarioComercial: 8,
-        valorTotal: 8,
+        valorUnitarioComercial: 9,
+        valorTotal: 9,
         cEANTrib: '7898633240015',
         unidadeTributavel: 'UN',
         quantidadeTributavel: 1,
-        valorUnitarioTributavel: 8,
+        valorUnitarioTributavel: 9,
         indicadorTotal: '1',
         valorFrete: '',
         valorSeguro: '',
@@ -324,51 +416,191 @@ produtos.push({
 
 });
 
-// produtos.push({
-//     prod: {
-//         codigo: '1',
-//         cEAN: '7898633240015',
-//         descricao: 'Brownie Fatia',
-//         cest: '1705100',
-//         NCM: '19052090',
-//         CFOP: '5101',
-//         unidadeComercial: 'UN',
-//         quantidadeComercial: 1,
-//         valorUnitarioComercial: 12,
-//         valorTotal: 12,
-//         cEANTrib: '7898633240015',
-//         unidadeTributavel: 'UN',
-//         quantidadeTributavel: 1,
-//         valorUnitarioTributavel: 12,
-//         indicadorTotal: '1',
-//         valorFrete: '',
-//         valorSeguro: '',
-//         valorDesconto: '',
-//         valorOutro: '',
-//         numeroPedido: '',
-//         numeroItemPedido: '',
-//     },
-//     imposto: {
-//         valorAproximadoTributos: 0,
-//         icms: {
-//             CSOSN: '102',
-//             orig: '0',
-//             modBCST: 0,
-//             pMVAST: 0,
-//             pRedBCST: '',
-//             vBCST: 0,
-//             pICMSST: 0,
-//             vICMSST: 0,
-//             vBCFCPST: '',
-//             pFCPST: '',
-//             vFCPST: ''
-//         }
-//     },
-//     //infoAdicional: 'TEST',
-//     // numeroItem: i,
-//     numeroItem: 1,
 
-// });
+
+produtos.push({
+    prod: {
+        codigo: '1',
+        cEAN: '7898633240015',
+        descricao: 'Coxinha',
+        cest: '1705100',
+        NCM: '19052090',
+        CFOP: '5101',
+        unidadeComercial: 'UN',
+        quantidadeComercial: 1,
+        valorUnitarioComercial: 6,
+        valorTotal: 6,
+        cEANTrib: '7898633240015',
+        unidadeTributavel: 'UN',
+        quantidadeTributavel: 1,
+        valorUnitarioTributavel: 6,
+        indicadorTotal: '1',
+        valorFrete: '',
+        valorSeguro: '',
+        valorDesconto: '',
+        valorOutro: '',
+        numeroPedido: '',
+        numeroItemPedido: '',
+    },
+    imposto: {
+        valorAproximadoTributos: 0,
+        icms: {
+            CSOSN: '102',
+            orig: '0',
+            modBCST: 0,
+            pMVAST: 0,
+            pRedBCST: '',
+            vBCST: 0,
+            pICMSST: 0,
+            vICMSST: 0,
+            vBCFCPST: '',
+            pFCPST: '',
+            vFCPST: ''
+        }
+    },
+    //infoAdicional: 'TEST',
+    // numeroItem: i,
+    numeroItem: 1,
+
+});
+
+produtos.push({
+    prod: {
+        codigo: '1',
+        cEAN: '7898633240015',
+        descricao: 'Trio Confeitado Brownie',
+        cest: '1705100',
+        NCM: '19052090',
+        CFOP: '5101',
+        unidadeComercial: 'UN',
+        quantidadeComercial: 1,
+        valorUnitarioComercial: 32,
+        valorTotal: 32,
+        cEANTrib: '7898633240015',
+        unidadeTributavel: 'UN',
+        quantidadeTributavel: 1,
+        valorUnitarioTributavel: 32,
+        indicadorTotal: '1',
+        valorFrete: '',
+        valorSeguro: '',
+        valorDesconto: '',
+        valorOutro: '',
+        numeroPedido: '',
+        numeroItemPedido: '',
+    },
+    imposto: {
+        valorAproximadoTributos: 0,
+        icms: {
+            CSOSN: '102',
+            orig: '0',
+            modBCST: 0,
+            pMVAST: 0,
+            pRedBCST: '',
+            vBCST: 0,
+            pICMSST: 0,
+            vICMSST: 0,
+            vBCFCPST: '',
+            pFCPST: '',
+            vFCPST: ''
+        }
+    },
+    //infoAdicional: 'TEST',
+    // numeroItem: i,
+    numeroItem: 1,
+
+});
+
+produtos.push({
+    prod: {
+        codigo: '1',
+        cEAN: '7898633240015',
+        descricao: 'Brownie Fatia',
+        cest: '1705100',
+        NCM: '19052090',
+        CFOP: '5101',
+        unidadeComercial: 'UN',
+        quantidadeComercial: 1,
+        valorUnitarioComercial: 12,
+        valorTotal: 12,
+        cEANTrib: '7898633240015',
+        unidadeTributavel: 'UN',
+        quantidadeTributavel: 1,
+        valorUnitarioTributavel: 12,
+        indicadorTotal: '1',
+        valorFrete: '',
+        valorSeguro: '',
+        valorDesconto: '',
+        valorOutro: '',
+        numeroPedido: '',
+        numeroItemPedido: '',
+    },
+    imposto: {
+        valorAproximadoTributos: 0,
+        icms: {
+            CSOSN: '102',
+            orig: '0',
+            modBCST: 0,
+            pMVAST: 0,
+            pRedBCST: '',
+            vBCST: 0,
+            pICMSST: 0,
+            vICMSST: 0,
+            vBCFCPST: '',
+            pFCPST: '',
+            vFCPST: ''
+        }
+    },
+    //infoAdicional: 'TEST',
+    // numeroItem: i,
+    numeroItem: 1,
+
+});
+
+produtos.push({
+    prod: {
+        codigo: '1',
+        cEAN: '7898633240015',
+        descricao: 'Extra Bola de Sorvete',
+        cest: '1705100',
+        NCM: '19052090',
+        CFOP: '5101',
+        unidadeComercial: 'UN',
+        quantidadeComercial: 2,
+        valorUnitarioComercial: 4,
+        valorTotal: 8,
+        cEANTrib: '7898633240015',
+        unidadeTributavel: 'UN',
+        quantidadeTributavel: 2,
+        valorUnitarioTributavel: 4,
+        indicadorTotal: '1',
+        valorFrete: '',
+        valorSeguro: '',
+        valorDesconto: '',
+        valorOutro: '',
+        numeroPedido: '',
+        numeroItemPedido: '',
+    },
+    imposto: {
+        valorAproximadoTributos: 0,
+        icms: {
+            CSOSN: '102',
+            orig: '0',
+            modBCST: 0,
+            pMVAST: 0,
+            pRedBCST: '',
+            vBCST: 0,
+            pICMSST: 0,
+            vICMSST: 0,
+            vBCFCPST: '',
+            pFCPST: '',
+            vFCPST: ''
+        }
+    },
+    //infoAdicional: 'TEST',
+    // numeroItem: i,
+    numeroItem: 1,
+
+});
 
 // produtos.push({
 //     prod: {
