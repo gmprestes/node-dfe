@@ -87,7 +87,7 @@ let documento = {
     dhEmissao: moment().format(),
     ambiente: '1',
     modelo: '65',
-    numeroNota: 20317,//randomInt(2, 9999),
+    numeroNota: 20320,//randomInt(2, 9999),
     serie: '20',
     naturezaOperacao: 'VENDA',
     tipoDocumentoFiscal: '1',
@@ -144,27 +144,28 @@ let dest = {
     }
 };
 
-let destNFCe = {
-    indicadorIEDestinario: '9',
-    documento: '31472747000176',
-    // inscricaoEstadual: '',
-    nome: 'Papa Comercio de Alim Cong LTDA',//'Aprimorar Suporte e Teleatendimento LTDA',
-    // email: '',
-    // isEstrangeiro: false,
-    endereco: null,
-    //  {
-    //     logradouro: '',
-    //     numero: '',
-    //     complemento: '',
-    //     bairro: '',
-    //     municipio: '',
-    //     codMunicipio: '',
-    //     cUf: '',
-    //     uf: '',
-    //     cep: '',
-    //     telefone: ''
-    // }
-};
+let destNFCe = null;
+// {
+//     indicadorIEDestinario: '9',
+//     documento: '31472747000176',
+//     // inscricaoEstadual: '',
+//     nome: 'Papa Comercio de Alim Cong LTDA',//'Aprimorar Suporte e Teleatendimento LTDA',
+//     // email: '',
+//     // isEstrangeiro: false,
+//     endereco: null,
+//     //  {
+//     //     logradouro: '',
+//     //     numero: '',
+//     //     complemento: '',
+//     //     bairro: '',
+//     //     municipio: '',
+//     //     codMunicipio: '',
+//     //     cUf: '',
+//     //     uf: '',
+//     //     cep: '',
+//     //     telefone: ''
+//     // }
+// };
 
 
 let transp = {
@@ -189,18 +190,18 @@ produtos.push({
     prod: {
         codigo: '2',
         cEAN: '7898633240015',
-        descricao: 'Expresso G',
+        descricao: 'Mocaccino',
         cest: '1705100',
         NCM: '19052090',
         CFOP: '5101',
         unidadeComercial: 'UN',
-        quantidadeComercial: 2,
-        valorUnitarioComercial: 6,
+        quantidadeComercial: 1,
+        valorUnitarioComercial: 12,
         valorTotal: 12,
         cEANTrib: '7898633240015',
         unidadeTributavel: 'UN',
-        quantidadeTributavel: 2,
-        valorUnitarioTributavel: 6,
+        quantidadeTributavel: 1,
+        valorUnitarioTributavel: 12,
         indicadorTotal: '1',
         valorFrete: '',
         valorSeguro: '',
@@ -231,22 +232,23 @@ produtos.push({
 
 });
 
+
 produtos.push({
     prod: {
         codigo: '3',
         cEAN: '7898633240015',
-        descricao: 'Pizza Gourmet',
+        descricao: 'Pao de Batata',
         cest: '1705100',
         NCM: '19052090',
         CFOP: '5101',
         unidadeComercial: 'UN',
         quantidadeComercial: 1,
-        valorUnitarioComercial: '15.90',
-        valorTotal: '15.90',
+        valorUnitarioComercial: 8,
+        valorTotal: 8,
         cEANTrib: '7898633240015',
         unidadeTributavel: 'UN',
         quantidadeTributavel: 1,
-        valorUnitarioTributavel: '15.90',
+        valorUnitarioTributavel: 8,
         indicadorTotal: '1',
         valorFrete: '',
         valorSeguro: '',
@@ -592,10 +594,10 @@ function testHashRespTec() {
 //testeAssinaturaXML();
 //testeConsultaStatusServico(empresa, '2', '65');
 
-testeCancelamentoNFe(empresa2, '1', '55', '43220431472747000176550010000058501952524212', '143220086108441', 'Pedido faturado erroneamente. CANCELADO.')
+//testeCancelamentoNFe(empresa2, '1', '55', '43220431472747000176550010000058501952524212', '143220086108441', 'Pedido faturado erroneamente. CANCELADO.')
 
 //testeDesereliaze();
-//testeEmissaoNFCe();
+testeEmissaoNFCe();
 //testeEmissaoNFe();
 
 //testeEmissaoNFCeContingenciaOffline(empresa);
