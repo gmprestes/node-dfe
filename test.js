@@ -17,7 +17,7 @@ cert2 = {
     key: fs.readFileSync('./cert.key'),
     pem: fs.readFileSync('./cert.pem'),
     pfx: fs.readFileSync('./cert.pfx'),
-    password: '142536'
+    password: '123456'
 };
 
 let empresa = {
@@ -87,7 +87,7 @@ let documento = {
     dhEmissao: moment().format(),
     ambiente: '1',
     modelo: '65',
-    numeroNota: 20324,//randomInt(2, 9999),
+    numeroNota: 20328,//randomInt(2, 9999),
     serie: '20',
     naturezaOperacao: 'VENDA',
     tipoDocumentoFiscal: '1',
@@ -147,9 +147,9 @@ let dest = {
 let destNFCe =  null;
 // {
 //     indicadorIEDestinario: '9',
-//     documento: '35250501000100',
+//     documento: '41883012015',
 //     // inscricaoEstadual: '',
-//     nome: 'BDSR BANCO DE INVESTIMENTOS LTDA',//'Aprimorar Suporte e Teleatendimento LTDA',
+//     nome: 'Elisete Giroto',//'Aprimorar Suporte e Teleatendimento LTDA',
 //     // email: '',
 //     // isEstrangeiro: false,
 //     endereco: null,
@@ -190,18 +190,18 @@ produtos.push({
     prod: {
         codigo: '2',
         cEAN: '7898633240015',
-        descricao: 'Quiche',
+        descricao: 'Expresso Grande',
         cest: '1705100',
         NCM: '19052090',
         CFOP: '5101',
         unidadeComercial: 'UN',
-        quantidadeComercial: 1,
-        valorUnitarioComercial: 12,
-        valorTotal: 12,
+        quantidadeComercial: 2,
+        valorUnitarioComercial: '6.00',
+        valorTotal: '12.00',
         cEANTrib: '7898633240015',
         unidadeTributavel: 'UN',
-        quantidadeTributavel: 1,
-        valorUnitarioTributavel: 12,
+        quantidadeTributavel: 2,
+        valorUnitarioTributavel: '6.00',
         indicadorTotal: '1',
         valorFrete: '',
         valorSeguro: '',
@@ -232,69 +232,68 @@ produtos.push({
 
 });
 
-
 produtos.push({
     prod: {
-        codigo: '3',
-        cEAN: '7898633240015',
-        descricao: 'Machiatto',
-        cest: '1705100',
-        NCM: '19052090',
-        CFOP: '5101',
-        unidadeComercial: 'UN',
-        quantidadeComercial: 1,
-        valorUnitarioComercial: '8.50',
-        valorTotal: '8.50',
-        cEANTrib: '7898633240015',
-        unidadeTributavel: 'UN',
-        quantidadeTributavel: 1,
-        valorUnitarioTributavel: '8.50',
-        indicadorTotal: '1',
-        valorFrete: '',
-        valorSeguro: '',
-        valorDesconto: '',
-        valorOutro: '',
-        numeroPedido: '',
-        numeroItemPedido: '',
-    },
-    imposto: {
-        valorAproximadoTributos: 0,
-        icms: {
-            CSOSN: '102',
-            orig: '0',
-            modBCST: 0,
-            pMVAST: 0,
-            pRedBCST: '',
-            vBCST: 0,
-            pICMSST: 0,
-            vICMSST: 0,
-            vBCFCPST: '',
-            pFCPST: '',
-            vFCPST: ''
-        }
-    },
-    //infoAdicional: 'TEST',
-    // numeroItem: i,
-    numeroItem: 3,
-
-});
-
-produtos.push({
-    prod: {
-        codigo: '3',
+        codigo: '2',
         cEAN: '7898633240015',
         descricao: 'Sanduiche Croissant',
         cest: '1705100',
         NCM: '19052090',
         CFOP: '5101',
         unidadeComercial: 'UN',
+        quantidadeComercial: 2,
+        valorUnitarioComercial: '19.90',
+        valorTotal: '39.80',
+        cEANTrib: '7898633240015',
+        unidadeTributavel: 'UN',
+        quantidadeTributavel: 2,
+        valorUnitarioTributavel: '19.90',
+        indicadorTotal: '1',
+        valorFrete: '',
+        valorSeguro: '',
+        valorDesconto: '',
+        valorOutro: '',
+        numeroPedido: '',
+        numeroItemPedido: '',
+    },
+    imposto: {
+        valorAproximadoTributos: 0,
+        icms: {
+            CSOSN: '102',
+            orig: '0',
+            modBCST: 0,
+            pMVAST: 0,
+            pRedBCST: '',
+            vBCST: 0,
+            pICMSST: 0,
+            vICMSST: 0,
+            vBCFCPST: '',
+            pFCPST: '',
+            vFCPST: ''
+        }
+    },
+    //infoAdicional: 'TEST',
+    // numeroItem: i,
+    numeroItem: 2,
+
+});
+
+produtos.push({
+    prod: {
+        codigo: '3',
+        cEAN: '7898633240015',
+        descricao: 'Misto Quente Pizza Pão Integral',
+        cest: '1705100',
+        NCM: '19052090',
+        CFOP: '5101',
+        unidadeComercial: 'UN',
         quantidadeComercial: 1,
-        valorUnitarioComercial: '18.90',
-        valorTotal: '18.90',
+        valorUnitarioComercial: '17.00',
+        valorTotal: '17.00',
         cEANTrib: '7898633240015',
         unidadeTributavel: 'UN',
         quantidadeTributavel: 1,
-        valorUnitarioTributavel: '18.90',
+        valorUnitarioTributavel: '17.00',
         indicadorTotal: '1',
         valorFrete: '',
         valorSeguro: '',
@@ -329,18 +328,64 @@ produtos.push({
     prod: {
         codigo: '3',
         cEAN: '7898633240015',
-        descricao: 'Suco Morango',
+        descricao: 'Folhado Frango',
         cest: '1705100',
         NCM: '19052090',
         CFOP: '5101',
         unidadeComercial: 'UN',
         quantidadeComercial: 1,
-        valorUnitarioComercial: 6,
-        valorTotal: 6,
+        valorUnitarioComercial: '9.00',
+        valorTotal: '9.00',
         cEANTrib: '7898633240015',
         unidadeTributavel: 'UN',
         quantidadeTributavel: 1,
-        valorUnitarioTributavel: 6,
+        valorUnitarioTributavel: '9.00',
+        indicadorTotal: '1',
+        valorFrete: '',
+        valorSeguro: '',
+        valorDesconto: '',
+        valorOutro: '',
+        numeroPedido: '',
+        numeroItemPedido: '',
+    },
+    imposto: {
+        valorAproximadoTributos: 0,
+        icms: {
+            CSOSN: '102',
+            orig: '0',
+            modBCST: 0,
+            pMVAST: 0,
+            pRedBCST: '',
+            vBCST: 0,
+            pICMSST: 0,
+            vICMSST: 0,
+            vBCFCPST: '',
+            pFCPST: '',
+            vFCPST: ''
+        }
+    },
+    //infoAdicional: 'TEST',
+    // numeroItem: i,
+    numeroItem: 3,
+
+});
+
+produtos.push({
+    prod: {
+        codigo: '3',
+        cEAN: '7898633240015',
+        descricao: 'Agua Mineral com Gas',
+        cest: '1705100',
+        NCM: '19052090',
+        CFOP: '5101',
+        unidadeComercial: 'UN',
+        quantidadeComercial: 1,
+        valorUnitarioComercial: 5,
+        valorTotal: 5,
+        cEANTrib: '7898633240015',
+        unidadeTributavel: 'UN',
+        quantidadeTributavel: 1,
+        valorUnitarioTributavel: 5,
         indicadorTotal: '1',
         valorFrete: '',
         valorSeguro: '',
