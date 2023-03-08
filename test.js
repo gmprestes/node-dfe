@@ -87,7 +87,7 @@ let documento = {
     dhEmissao: moment().format(),
     ambiente: '1',
     modelo: '65',
-    numeroNota: 20320,//randomInt(2, 9999),
+    numeroNota: 20324,//randomInt(2, 9999),
     serie: '20',
     naturezaOperacao: 'VENDA',
     tipoDocumentoFiscal: '1',
@@ -144,12 +144,12 @@ let dest = {
     }
 };
 
-let destNFCe = null;
+let destNFCe =  null;
 // {
 //     indicadorIEDestinario: '9',
-//     documento: '31472747000176',
+//     documento: '35250501000100',
 //     // inscricaoEstadual: '',
-//     nome: 'Papa Comercio de Alim Cong LTDA',//'Aprimorar Suporte e Teleatendimento LTDA',
+//     nome: 'BDSR BANCO DE INVESTIMENTOS LTDA',//'Aprimorar Suporte e Teleatendimento LTDA',
 //     // email: '',
 //     // isEstrangeiro: false,
 //     endereco: null,
@@ -190,7 +190,7 @@ produtos.push({
     prod: {
         codigo: '2',
         cEAN: '7898633240015',
-        descricao: 'Mocaccino',
+        descricao: 'Quiche',
         cest: '1705100',
         NCM: '19052090',
         CFOP: '5101',
@@ -237,18 +237,18 @@ produtos.push({
     prod: {
         codigo: '3',
         cEAN: '7898633240015',
-        descricao: 'Pao de Batata',
+        descricao: 'Machiatto',
         cest: '1705100',
         NCM: '19052090',
         CFOP: '5101',
         unidadeComercial: 'UN',
         quantidadeComercial: 1,
-        valorUnitarioComercial: 8,
-        valorTotal: 8,
+        valorUnitarioComercial: '8.50',
+        valorTotal: '8.50',
         cEANTrib: '7898633240015',
         unidadeTributavel: 'UN',
         quantidadeTributavel: 1,
-        valorUnitarioTributavel: 8,
+        valorUnitarioTributavel: '8.50',
         indicadorTotal: '1',
         valorFrete: '',
         valorSeguro: '',
@@ -278,6 +278,144 @@ produtos.push({
     numeroItem: 3,
 
 });
+
+produtos.push({
+    prod: {
+        codigo: '3',
+        cEAN: '7898633240015',
+        descricao: 'Sanduiche Croissant',
+        cest: '1705100',
+        NCM: '19052090',
+        CFOP: '5101',
+        unidadeComercial: 'UN',
+        quantidadeComercial: 1,
+        valorUnitarioComercial: '18.90',
+        valorTotal: '18.90',
+        cEANTrib: '7898633240015',
+        unidadeTributavel: 'UN',
+        quantidadeTributavel: 1,
+        valorUnitarioTributavel: '18.90',
+        indicadorTotal: '1',
+        valorFrete: '',
+        valorSeguro: '',
+        valorDesconto: '',
+        valorOutro: '',
+        numeroPedido: '',
+        numeroItemPedido: '',
+    },
+    imposto: {
+        valorAproximadoTributos: 0,
+        icms: {
+            CSOSN: '102',
+            orig: '0',
+            modBCST: 0,
+            pMVAST: 0,
+            pRedBCST: '',
+            vBCST: 0,
+            pICMSST: 0,
+            vICMSST: 0,
+            vBCFCPST: '',
+            pFCPST: '',
+            vFCPST: ''
+        }
+    },
+    //infoAdicional: 'TEST',
+    // numeroItem: i,
+    numeroItem: 3,
+
+});
+
+produtos.push({
+    prod: {
+        codigo: '3',
+        cEAN: '7898633240015',
+        descricao: 'Suco Morango',
+        cest: '1705100',
+        NCM: '19052090',
+        CFOP: '5101',
+        unidadeComercial: 'UN',
+        quantidadeComercial: 1,
+        valorUnitarioComercial: 6,
+        valorTotal: 6,
+        cEANTrib: '7898633240015',
+        unidadeTributavel: 'UN',
+        quantidadeTributavel: 1,
+        valorUnitarioTributavel: 6,
+        indicadorTotal: '1',
+        valorFrete: '',
+        valorSeguro: '',
+        valorDesconto: '',
+        valorOutro: '',
+        numeroPedido: '',
+        numeroItemPedido: '',
+    },
+    imposto: {
+        valorAproximadoTributos: 0,
+        icms: {
+            CSOSN: '102',
+            orig: '0',
+            modBCST: 0,
+            pMVAST: 0,
+            pRedBCST: '',
+            vBCST: 0,
+            pICMSST: 0,
+            vICMSST: 0,
+            vBCFCPST: '',
+            pFCPST: '',
+            vFCPST: ''
+        }
+    },
+    //infoAdicional: 'TEST',
+    // numeroItem: i,
+    numeroItem: 3,
+
+});
+
+// produtos.push({
+//     prod: {
+//         codigo: '3',
+//         cEAN: '7898633240015',
+//         descricao: 'Capuccino',
+//         cest: '1705100',
+//         NCM: '19052090',
+//         CFOP: '5101',
+//         unidadeComercial: 'UN',
+//         quantidadeComercial: 1,
+//         valorUnitarioComercial: 12,
+//         valorTotal: 12,
+//         cEANTrib: '7898633240015',
+//         unidadeTributavel: 'UN',
+//         quantidadeTributavel: 1,
+//         valorUnitarioTributavel: 12,
+//         indicadorTotal: '1',
+//         valorFrete: '',
+//         valorSeguro: '',
+//         valorDesconto: '',
+//         valorOutro: '',
+//         numeroPedido: '',
+//         numeroItemPedido: '',
+//     },
+//     imposto: {
+//         valorAproximadoTributos: 0,
+//         icms: {
+//             CSOSN: '102',
+//             orig: '0',
+//             modBCST: 0,
+//             pMVAST: 0,
+//             pRedBCST: '',
+//             vBCST: 0,
+//             pICMSST: 0,
+//             vICMSST: 0,
+//             vBCFCPST: '',
+//             pFCPST: '',
+//             vFCPST: ''
+//         }
+//     },
+//     //infoAdicional: 'TEST',
+//     // numeroItem: i,
+//     numeroItem: 3,
+
+// });
 
 // produtos.push({
 //     prod: {
