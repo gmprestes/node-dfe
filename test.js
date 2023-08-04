@@ -87,7 +87,7 @@ let documento = {
     dhEmissao: moment().format(),
     ambiente: '1',
     modelo: '65',
-    numeroNota: 20332,//randomInt(2, 9999),
+    numeroNota: 20334,//randomInt(2, 9999),
     serie: '20',
     naturezaOperacao: 'VENDA',
     tipoDocumentoFiscal: '1',
@@ -144,15 +144,15 @@ let dest = {
     }
 };
 
-let destNFCe  = // null;
-{
-    indicadorIEDestinario: '9',
-    documento: '36618235000199',
+let destNFCe  =  null;
+//{
+    //indicadorIEDestinario: '9',
+    //documento: '19475354000110',
     // inscricaoEstadual: '',
     //nome: 'Elisete Giroto',//'Aprimorar Suporte e Teleatendimento LTDA',
     // email: '',
     // isEstrangeiro: false,
-    endereco: null,
+    //endereco: null,
     //  {
     //     logradouro: '',
     //     numero: '',
@@ -165,7 +165,7 @@ let destNFCe  = // null;
     //     cep: '',
     //     telefone: ''
     // }
-};
+//};
 
 
 let transp = {
@@ -190,18 +190,18 @@ produtos.push({
     prod: {
         codigo: '2',
         cEAN: '7898633240015',
-        descricao: 'Croissant Branco c/ Morango',
+        descricao: 'Pão Batata',
         cest: '1705100',
         NCM: '19052090',
         CFOP: '5101',
         unidadeComercial: 'UN',
         quantidadeComercial: 1,
-        valorUnitarioComercial: '29.90',
-        valorTotal: '29.90',
+        valorUnitarioComercial: '8.00',
+        valorTotal: '8.00',
         cEANTrib: '7898633240015',
         unidadeTributavel: 'UN',
         quantidadeTributavel: 1,
-        valorUnitarioTributavel: '29.90',
+        valorUnitarioTributavel: '8.00',
         indicadorTotal: '1',
         valorFrete: '',
         valorSeguro: '',
@@ -236,63 +236,109 @@ produtos.push({
     prod: {
         codigo: '1',
         cEAN: '7898633240015',
-        descricao: 'Extra Sorvete',
-        cest: '1705100',
-        NCM: '19052090',
-        CFOP: '5101',
-        unidadeComercial: 'UN',
-        quantidadeComercial: 1,
-        valorUnitarioComercial: '4.00',
-        valorTotal: '4.00',
-        cEANTrib: '7898633240015',
-        unidadeTributavel: 'UN',
-        quantidadeTributavel: 1,
-        valorUnitarioTributavel: '4.00',
-        indicadorTotal: '1',
-        valorFrete: '',
-        valorSeguro: '',
-        valorDesconto: '',
-        valorOutro: '',
-        numeroPedido: '',
-        numeroItemPedido: '',
-    },
-    imposto: {
-        valorAproximadoTributos: 0,
-        icms: {
-            CSOSN: '102',
-            orig: '0',
-            modBCST: 0,
-            pMVAST: 0,
-            pRedBCST: '',
-            vBCST: 0,
-            pICMSST: 0,
-            vICMSST: 0,
-            vBCFCPST: '',
-            pFCPST: '',
-            vFCPST: ''
-        }
-    },
-    //infoAdicional: 'TEST',
-    // numeroItem: i,
-    numeroItem: 2,
-
-});
-
-produtos.push({
-    prod: {
-        codigo: '1',
-        cEAN: '7898633240015',
-        descricao: 'Cappuccino',
+        descricao: 'Misto Quente',
         cest: '1705100',
         NCM: '19052090',
         CFOP: '5101',
         unidadeComercial: 'UN',
         quantidadeComercial: 2,
-        valorUnitarioComercial: '12.00',
-        valorTotal: '24.00',
+        valorUnitarioComercial: '15.00',
+        valorTotal: '30.00',
         cEANTrib: '7898633240015',
         unidadeTributavel: 'UN',
         quantidadeTributavel: 2,
+        valorUnitarioTributavel: '15.00',
+        indicadorTotal: '1',
+        valorFrete: '',
+        valorSeguro: '',
+        valorDesconto: '',
+        valorOutro: '',
+        numeroPedido: '',
+        numeroItemPedido: '',
+    },
+    imposto: {
+        valorAproximadoTributos: 0,
+        icms: {
+            CSOSN: '102',
+            orig: '0',
+            modBCST: 0,
+            pMVAST: 0,
+            pRedBCST: '',
+            vBCST: 0,
+            pICMSST: 0,
+            vICMSST: 0,
+            vBCFCPST: '',
+            pFCPST: '',
+            vFCPST: ''
+        }
+    },
+    //infoAdicional: 'TEST',
+    // numeroItem: i,
+    numeroItem: 2,
+
+});
+
+produtos.push({
+    prod: {
+        codigo: '1',
+        cEAN: '7898633240015',
+        descricao: 'Latte Grande',
+        cest: '1705100',
+        NCM: '19052090',
+        CFOP: '5101',
+        unidadeComercial: 'UN',
+        quantidadeComercial: 2,
+        valorUnitarioComercial: '8.00',
+        valorTotal: '16.00',
+        cEANTrib: '7898633240015',
+        unidadeTributavel: 'UN',
+        quantidadeTributavel: 2,
+        valorUnitarioTributavel: '8.00',
+        indicadorTotal: '1',
+        valorFrete: '',
+        valorSeguro: '',
+        valorDesconto: '',
+        valorOutro: '',
+        numeroPedido: '',
+        numeroItemPedido: '',
+    },
+    imposto: {
+        valorAproximadoTributos: 0,
+        icms: {
+            CSOSN: '102',
+            orig: '0',
+            modBCST: 0,
+            pMVAST: 0,
+            pRedBCST: '',
+            vBCST: 0,
+            pICMSST: 0,
+            vICMSST: 0,
+            vBCFCPST: '',
+            pFCPST: '',
+            vFCPST: ''
+        }
+    },
+    //infoAdicional: 'TEST',
+    // numeroItem: i,
+    numeroItem: 2,
+
+});
+
+produtos.push({
+    prod: {
+        codigo: '1',
+        cEAN: '7898633240015',
+        descricao: 'Brownie recheado (fatia)',
+        cest: '1705100',
+        NCM: '19052090',
+        CFOP: '5101',
+        unidadeComercial: 'UN',
+        quantidadeComercial: 1,
+        valorUnitarioComercial: '12.00',
+        valorTotal: '12.00',
+        cEANTrib: '7898633240015',
+        unidadeTributavel: 'UN',
+        quantidadeTributavel: 1,
         valorUnitarioTributavel: '12.00',
         indicadorTotal: '1',
         valorFrete: '',
@@ -324,51 +370,97 @@ produtos.push({
 
 });
 
-produtos.push({
-    prod: {
-        codigo: '1',
-        cEAN: '7898633240015',
-        descricao: 'Croissant Frango c/ Requeijao',
-        cest: '1705100',
-        NCM: '19052090',
-        CFOP: '5101',
-        unidadeComercial: 'UN',
-        quantidadeComercial: 2,
-        valorUnitarioComercial: '14.00',
-        valorTotal: '28.00',
-        cEANTrib: '7898633240015',
-        unidadeTributavel: 'UN',
-        quantidadeTributavel: 2,
-        valorUnitarioTributavel: '14.00',
-        indicadorTotal: '1',
-        valorFrete: '',
-        valorSeguro: '',
-        valorDesconto: '',
-        valorOutro: '',
-        numeroPedido: '',
-        numeroItemPedido: '',
-    },
-    imposto: {
-        valorAproximadoTributos: 0,
-        icms: {
-            CSOSN: '102',
-            orig: '0',
-            modBCST: 0,
-            pMVAST: 0,
-            pRedBCST: '',
-            vBCST: 0,
-            pICMSST: 0,
-            vICMSST: 0,
-            vBCFCPST: '',
-            pFCPST: '',
-            vFCPST: ''
-        }
-    },
-    //infoAdicional: 'TEST',
-    // numeroItem: i,
-    numeroItem: 2,
+// produtos.push({
+//     prod: {
+//         codigo: '1',
+//         cEAN: '7898633240015',
+//         descricao: 'Cappuccino',
+//         cest: '1705100',
+//         NCM: '19052090',
+//         CFOP: '5101',
+//         unidadeComercial: 'UN',
+//         quantidadeComercial: 2,
+//         valorUnitarioComercial: '12.00',
+//         valorTotal: '24.00',
+//         cEANTrib: '7898633240015',
+//         unidadeTributavel: 'UN',
+//         quantidadeTributavel: 2,
+//         valorUnitarioTributavel: '12.00',
+//         indicadorTotal: '1',
+//         valorFrete: '',
+//         valorSeguro: '',
+//         valorDesconto: '',
+//         valorOutro: '',
+//         numeroPedido: '',
+//         numeroItemPedido: '',
+//     },
+//     imposto: {
+//         valorAproximadoTributos: 0,
+//         icms: {
+//             CSOSN: '102',
+//             orig: '0',
+//             modBCST: 0,
+//             pMVAST: 0,
+//             pRedBCST: '',
+//             vBCST: 0,
+//             pICMSST: 0,
+//             vICMSST: 0,
+//             vBCFCPST: '',
+//             pFCPST: '',
+//             vFCPST: ''
+//         }
+//     },
+//     //infoAdicional: 'TEST',
+//     // numeroItem: i,
+//     numeroItem: 2,
 
-});
+// });
+
+// produtos.push({
+//     prod: {
+//         codigo: '1',
+//         cEAN: '7898633240015',
+//         descricao: 'Croissant Frango c/ Requeijao',
+//         cest: '1705100',
+//         NCM: '19052090',
+//         CFOP: '5101',
+//         unidadeComercial: 'UN',
+//         quantidadeComercial: 2,
+//         valorUnitarioComercial: '14.00',
+//         valorTotal: '28.00',
+//         cEANTrib: '7898633240015',
+//         unidadeTributavel: 'UN',
+//         quantidadeTributavel: 2,
+//         valorUnitarioTributavel: '14.00',
+//         indicadorTotal: '1',
+//         valorFrete: '',
+//         valorSeguro: '',
+//         valorDesconto: '',
+//         valorOutro: '',
+//         numeroPedido: '',
+//         numeroItemPedido: '',
+//     },
+//     imposto: {
+//         valorAproximadoTributos: 0,
+//         icms: {
+//             CSOSN: '102',
+//             orig: '0',
+//             modBCST: 0,
+//             pMVAST: 0,
+//             pRedBCST: '',
+//             vBCST: 0,
+//             pICMSST: 0,
+//             vICMSST: 0,
+//             vBCFCPST: '',
+//             pFCPST: '',
+//             vFCPST: ''
+//         }
+//     },
+//     //infoAdicional: 'TEST',
+//     // numeroItem: i,
+//     numeroItem: 2,
+
+// });
 
 // produtos.push({
 //     prod: {
