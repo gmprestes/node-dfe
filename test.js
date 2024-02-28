@@ -87,7 +87,7 @@ let documento = {
     dhEmissao: moment().format(),
     ambiente: '1',
     modelo: '65',
-    numeroNota: 20334,//randomInt(2, 9999),
+    numeroNota: 20342,//randomInt(2, 9999),
     serie: '20',
     naturezaOperacao: 'VENDA',
     tipoDocumentoFiscal: '1',
@@ -144,15 +144,15 @@ let dest = {
     }
 };
 
-let destNFCe  =  null;
-//{
-    //indicadorIEDestinario: '9',
-    //documento: '19475354000110',
-    // inscricaoEstadual: '',
-    //nome: 'Elisete Giroto',//'Aprimorar Suporte e Teleatendimento LTDA',
-    // email: '',
-    // isEstrangeiro: false,
-    //endereco: null,
+let destNFCe  =
+{
+    indicadorIEDestinario: '9',
+    documento: '07605836000169',
+    inscricaoEstadual: '',
+    nome: 'Sanuvitas Laboratorios LTDA',//'Aprimorar Suporte e Teleatendimento LTDA',
+    email: '',
+    isEstrangeiro: false,
+    endereco: null,
     //  {
     //     logradouro: '',
     //     numero: '',
@@ -165,7 +165,7 @@ let destNFCe  =  null;
     //     cep: '',
     //     telefone: ''
     // }
-//};
+};
 
 
 let transp = {
@@ -190,18 +190,18 @@ produtos.push({
     prod: {
         codigo: '2',
         cEAN: '7898633240015',
-        descricao: 'Pão Batata',
+        descricao: 'Sanduiche Croissant',
         cest: '1705100',
         NCM: '19052090',
         CFOP: '5101',
         unidadeComercial: 'UN',
         quantidadeComercial: 1,
-        valorUnitarioComercial: '8.00',
-        valorTotal: '8.00',
+        valorUnitarioComercial: '19.90',
+        valorTotal: '19.90',
         cEANTrib: '7898633240015',
         unidadeTributavel: 'UN',
         quantidadeTributavel: 1,
-        valorUnitarioTributavel: '8.00',
+        valorUnitarioTributavel: '19.90',
         indicadorTotal: '1',
         valorFrete: '',
         valorSeguro: '',
@@ -232,143 +232,189 @@ produtos.push({
 
 });
 
-produtos.push({
-    prod: {
-        codigo: '1',
-        cEAN: '7898633240015',
-        descricao: 'Misto Quente',
-        cest: '1705100',
-        NCM: '19052090',
-        CFOP: '5101',
-        unidadeComercial: 'UN',
-        quantidadeComercial: 2,
-        valorUnitarioComercial: '15.00',
-        valorTotal: '30.00',
-        cEANTrib: '7898633240015',
-        unidadeTributavel: 'UN',
-        quantidadeTributavel: 2,
-        valorUnitarioTributavel: '15.00',
-        indicadorTotal: '1',
-        valorFrete: '',
-        valorSeguro: '',
-        valorDesconto: '',
-        valorOutro: '',
-        numeroPedido: '',
-        numeroItemPedido: '',
-    },
-    imposto: {
-        valorAproximadoTributos: 0,
-        icms: {
-            CSOSN: '102',
-            orig: '0',
-            modBCST: 0,
-            pMVAST: 0,
-            pRedBCST: '',
-            vBCST: 0,
-            pICMSST: 0,
-            vICMSST: 0,
-            vBCFCPST: '',
-            pFCPST: '',
-            vFCPST: ''
-        }
-    },
-    //infoAdicional: 'TEST',
-    // numeroItem: i,
-    numeroItem: 2,
+// produtos.push({
+//     prod: {
+//         codigo: '2',
+//         cEAN: '7898633240015',
+//         descricao: 'Capuccino',
+//         cest: '1705100',
+//         NCM: '19052090',
+//         CFOP: '5101',
+//         unidadeComercial: 'UN',
+//         quantidadeComercial: 1,
+//         valorUnitarioComercial: '12.00',
+//         valorTotal: '12.00',
+//         cEANTrib: '7898633240015',
+//         unidadeTributavel: 'UN',
+//         quantidadeTributavel: 1,
+//         valorUnitarioTributavel: '12.00',
+//         indicadorTotal: '1',
+//         valorFrete: '',
+//         valorSeguro: '',
+//         valorDesconto: '',
+//         valorOutro: '',
+//         numeroPedido: '',
+//         numeroItemPedido: '',
+//     },
+//     imposto: {
+//         valorAproximadoTributos: 0,
+//         icms: {
+//             CSOSN: '102',
+//             orig: '0',
+//             modBCST: 0,
+//             pMVAST: 0,
+//             pRedBCST: '',
+//             vBCST: 0,
+//             pICMSST: 0,
+//             vICMSST: 0,
+//             vBCFCPST: '',
+//             pFCPST: '',
+//             vFCPST: ''
+//         }
+//     },
+//     //infoAdicional: 'TEST',
+//     // numeroItem: i,
+//     numeroItem: 2,
 
-});
+// });
 
-produtos.push({
-    prod: {
-        codigo: '1',
-        cEAN: '7898633240015',
-        descricao: 'Latte Grande',
-        cest: '1705100',
-        NCM: '19052090',
-        CFOP: '5101',
-        unidadeComercial: 'UN',
-        quantidadeComercial: 2,
-        valorUnitarioComercial: '8.00',
-        valorTotal: '16.00',
-        cEANTrib: '7898633240015',
-        unidadeTributavel: 'UN',
-        quantidadeTributavel: 2,
-        valorUnitarioTributavel: '8.00',
-        indicadorTotal: '1',
-        valorFrete: '',
-        valorSeguro: '',
-        valorDesconto: '',
-        valorOutro: '',
-        numeroPedido: '',
-        numeroItemPedido: '',
-    },
-    imposto: {
-        valorAproximadoTributos: 0,
-        icms: {
-            CSOSN: '102',
-            orig: '0',
-            modBCST: 0,
-            pMVAST: 0,
-            pRedBCST: '',
-            vBCST: 0,
-            pICMSST: 0,
-            vICMSST: 0,
-            vBCFCPST: '',
-            pFCPST: '',
-            vFCPST: ''
-        }
-    },
-    //infoAdicional: 'TEST',
-    // numeroItem: i,
-    numeroItem: 2,
+// produtos.push({
+//     prod: {
+//         codigo: '1',
+//         cEAN: '7898633240015',
+//         descricao: 'Misto Quente',
+//         cest: '1705100',
+//         NCM: '19052090',
+//         CFOP: '5101',
+//         unidadeComercial: 'UN',
+//         quantidadeComercial: 2,
+//         valorUnitarioComercial: '15.00',
+//         valorTotal: '30.00',
+//         cEANTrib: '7898633240015',
+//         unidadeTributavel: 'UN',
+//         quantidadeTributavel: 2,
+//         valorUnitarioTributavel: '15.00',
+//         indicadorTotal: '1',
+//         valorFrete: '',
+//         valorSeguro: '',
+//         valorDesconto: '',
+//         valorOutro: '',
+//         numeroPedido: '',
+//         numeroItemPedido: '',
+//     },
+//     imposto: {
+//         valorAproximadoTributos: 0,
+//         icms: {
+//             CSOSN: '102',
+//             orig: '0',
+//             modBCST: 0,
+//             pMVAST: 0,
+//             pRedBCST: '',
+//             vBCST: 0,
+//             pICMSST: 0,
+//             vICMSST: 0,
+//             vBCFCPST: '',
+//             pFCPST: '',
+//             vFCPST: ''
+//         }
+//     },
+//     //infoAdicional: 'TEST',
+//     // numeroItem: i,
+//     numeroItem: 2,
 
-});
+// });
 
-produtos.push({
-    prod: {
-        codigo: '1',
-        cEAN: '7898633240015',
-        descricao: 'Brownie recheado (fatia)',
-        cest: '1705100',
-        NCM: '19052090',
-        CFOP: '5101',
-        unidadeComercial: 'UN',
-        quantidadeComercial: 1,
-        valorUnitarioComercial: '12.00',
-        valorTotal: '12.00',
-        cEANTrib: '7898633240015',
-        unidadeTributavel: 'UN',
-        quantidadeTributavel: 1,
-        valorUnitarioTributavel: '12.00',
-        indicadorTotal: '1',
-        valorFrete: '',
-        valorSeguro: '',
-        valorDesconto: '',
-        valorOutro: '',
-        numeroPedido: '',
-        numeroItemPedido: '',
-    },
-    imposto: {
-        valorAproximadoTributos: 0,
-        icms: {
-            CSOSN: '102',
-            orig: '0',
-            modBCST: 0,
-            pMVAST: 0,
-            pRedBCST: '',
-            vBCST: 0,
-            pICMSST: 0,
-            vICMSST: 0,
-            vBCFCPST: '',
-            pFCPST: '',
-            vFCPST: ''
-        }
-    },
-    //infoAdicional: 'TEST',
-    // numeroItem: i,
-    numeroItem: 2,
+// produtos.push({
+//     prod: {
+//         codigo: '1',
+//         cEAN: '7898633240015',
+//         descricao: 'Latte Grande',
+//         cest: '1705100',
+//         NCM: '19052090',
+//         CFOP: '5101',
+//         unidadeComercial: 'UN',
+//         quantidadeComercial: 2,
+//         valorUnitarioComercial: '8.00',
+//         valorTotal: '16.00',
+//         cEANTrib: '7898633240015',
+//         unidadeTributavel: 'UN',
+//         quantidadeTributavel: 2,
+//         valorUnitarioTributavel: '8.00',
+//         indicadorTotal: '1',
+//         valorFrete: '',
+//         valorSeguro: '',
+//         valorDesconto: '',
+//         valorOutro: '',
+//         numeroPedido: '',
+//         numeroItemPedido: '',
+//     },
+//     imposto: {
+//         valorAproximadoTributos: 0,
+//         icms: {
+//             CSOSN: '102',
+//             orig: '0',
+//             modBCST: 0,
+//             pMVAST: 0,
+//             pRedBCST: '',
+//             vBCST: 0,
+//             pICMSST: 0,
+//             vICMSST: 0,
+//             vBCFCPST: '',
+//             pFCPST: '',
+//             vFCPST: ''
+//         }
+//     },
+//     //infoAdicional: 'TEST',
+//     // numeroItem: i,
+//     numeroItem: 2,
 
-});
+// });
+
+// produtos.push({
+//     prod: {
+//         codigo: '1',
+//         cEAN: '7898633240015',
+//         descricao: 'Brownie recheado (fatia)',
+//         cest: '1705100',
+//         NCM: '19052090',
+//         CFOP: '5101',
+//         unidadeComercial: 'UN',
+//         quantidadeComercial: 1,
+//         valorUnitarioComercial: '12.00',
+//         valorTotal: '12.00',
+//         cEANTrib: '7898633240015',
+//         unidadeTributavel: 'UN',
+//         quantidadeTributavel: 1,
+//         valorUnitarioTributavel: '12.00',
+//         indicadorTotal: '1',
+//         valorFrete: '',
+//         valorSeguro: '',
+//         valorDesconto: '',
+//         valorOutro: '',
+//         numeroPedido: '',
+//         numeroItemPedido: '',
+//     },
+//     imposto: {
+//         valorAproximadoTributos: 0,
+//         icms: {
+//             CSOSN: '102',
+//             orig: '0',
+//             modBCST: 0,
+//             pMVAST: 0,
+//             pRedBCST: '',
+//             vBCST: 0,
+//             pICMSST: 0,
+//             vICMSST: 0,
+//             vBCFCPST: '',
+//             pFCPST: '',
+//             vFCPST: ''
+//         }
+//     },
+//     //infoAdicional: 'TEST',
+//     // numeroItem: i,
+//     numeroItem: 2,
+
+// });
 
 // produtos.push({
 //     prod: {
@@ -462,68 +508,68 @@ produtos.push({
 
 // });
 
-// produtos.push({
-//     prod: {
-//         codigo: '2',
-//         cEAN: '7898633240015',
-//         descricao: 'Machiatto',
-//         cest: '1705100',
-//         NCM: '19052090',
-//         CFOP: '5101',
-//         unidadeComercial: 'UN',
-//         quantidadeComercial: 1,
-//         valorUnitarioComercial: '6.50',
-//         valorTotal: '6.50',
-//         cEANTrib: '7898633240015',
-//         unidadeTributavel: 'UN',
-//         quantidadeTributavel: 1,
-//         valorUnitarioTributavel: '6.50',
-//         indicadorTotal: '1',
-//         valorFrete: '',
-//         valorSeguro: '',
-//         valorDesconto: '',
-//         valorOutro: '',
-//         numeroPedido: '',
-//         numeroItemPedido: '',
-//     },
-//     imposto: {
-//         valorAproximadoTributos: 0,
-//         icms: {
-//             CSOSN: '102',
-//             orig: '0',
-//             modBCST: 0,
-//             pMVAST: 0,
-//             pRedBCST: '',
-//             vBCST: 0,
-//             pICMSST: 0,
-//             vICMSST: 0,
-//             vBCFCPST: '',
-//             pFCPST: '',
-//             vFCPST: ''
-//         }
-//     },
-//     //infoAdicional: 'TEST',
-//     // numeroItem: i,
-//     numeroItem: 2,
+produtos.push({
+    prod: {
+        codigo: '2',
+        cEAN: '7898633240015',
+        descricao: 'Soda Italiana',
+        cest: '1705100',
+        NCM: '19052090',
+        CFOP: '5101',
+        unidadeComercial: 'UN',
+        quantidadeComercial: 1,
+        valorUnitarioComercial: '15.00',
+        valorTotal: '15.00',
+        cEANTrib: '7898633240015',
+        unidadeTributavel: 'UN',
+        quantidadeTributavel: 1,
+        valorUnitarioTributavel: '15.00',
+        indicadorTotal: '1',
+        valorFrete: '',
+        valorSeguro: '',
+        valorDesconto: '',
+        valorOutro: '',
+        numeroPedido: '',
+        numeroItemPedido: '',
+    },
+    imposto: {
+        valorAproximadoTributos: 0,
+        icms: {
+            CSOSN: '102',
+            orig: '0',
+            modBCST: 0,
+            pMVAST: 0,
+            pRedBCST: '',
+            vBCST: 0,
+            pICMSST: 0,
+            vICMSST: 0,
+            vBCFCPST: '',
+            pFCPST: '',
+            vFCPST: ''
+        }
+    },
+    //infoAdicional: 'TEST',
+    // numeroItem: i,
+    numeroItem: 2,
 
-// });
+});
 
 // produtos.push({
 //     prod: {
 //         codigo: '3',
 //         cEAN: '7898633240015',
-//         descricao: 'Misto Quente Pizza Pão Integral',
+//         descricao: 'Latte G',
 //         cest: '1705100',
 //         NCM: '19052090',
 //         CFOP: '5101',
 //         unidadeComercial: 'UN',
-//         quantidadeComercial: 1,
-//         valorUnitarioComercial: '17.00',
-//         valorTotal: '17.00',
+//         quantidadeComercial: 2,
+//         valorUnitarioComercial: '8.00',
+//         valorTotal: '16.00',
 //         cEANTrib: '7898633240015',
 //         unidadeTributavel: 'UN',
-//         quantidadeTributavel: 1,
-//         valorUnitarioTributavel: '17.00',
+//         quantidadeTributavel: 2,
+//         valorUnitarioTributavel: '8.00',
 //         indicadorTotal: '1',
 //         valorFrete: '',
 //         valorSeguro: '',
@@ -558,18 +604,18 @@ produtos.push({
 //     prod: {
 //         codigo: '3',
 //         cEAN: '7898633240015',
-//         descricao: 'Folhado Frango',
+//         descricao: 'Latte P',
 //         cest: '1705100',
 //         NCM: '19052090',
 //         CFOP: '5101',
 //         unidadeComercial: 'UN',
 //         quantidadeComercial: 1,
-//         valorUnitarioComercial: '9.00',
-//         valorTotal: '9.00',
+//         valorUnitarioComercial: '7.00',
+//         valorTotal: '7.00',
 //         cEANTrib: '7898633240015',
 //         unidadeTributavel: 'UN',
 //         quantidadeTributavel: 1,
-//         valorUnitarioTributavel: '9.00',
+//         valorUnitarioTributavel: '7.00',
 //         indicadorTotal: '1',
 //         valorFrete: '',
 //         valorSeguro: '',
@@ -599,6 +645,52 @@ produtos.push({
 //     numeroItem: 3,
 
 // });
+
+produtos.push({
+    prod: {
+        codigo: '3',
+        cEAN: '7898633240015',
+        descricao: 'Agua com Gas',
+        cest: '1705100',
+        NCM: '19052090',
+        CFOP: '5101',
+        unidadeComercial: 'UN',
+        quantidadeComercial: 1,
+        valorUnitarioComercial: '5.00',
+        valorTotal: '5.00',
+        cEANTrib: '7898633240015',
+        unidadeTributavel: 'UN',
+        quantidadeTributavel: 1,
+        valorUnitarioTributavel: '5.00',
+        indicadorTotal: '1',
+        valorFrete: '',
+        valorSeguro: '',
+        valorDesconto: '',
+        valorOutro: '',
+        numeroPedido: '',
+        numeroItemPedido: '',
+    },
+    imposto: {
+        valorAproximadoTributos: 0,
+        icms: {
+            CSOSN: '102',
+            orig: '0',
+            modBCST: 0,
+            pMVAST: 0,
+            pRedBCST: '',
+            vBCST: 0,
+            pICMSST: 0,
+            vICMSST: 0,
+            vBCFCPST: '',
+            pFCPST: '',
+            vFCPST: ''
+        }
+    },
+    //infoAdicional: 'TEST',
+    // numeroItem: i,
+    numeroItem: 3,
+
+});
 
 // produtos.push({
 //     prod: {
