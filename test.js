@@ -17,7 +17,7 @@ cert2 = {
     key: fs.readFileSync('./cert.key'),
     pem: fs.readFileSync('./cert.pem'),
     pfx: fs.readFileSync('./cert.pfx'),
-    password: 'Guilherme@01'
+    password: 'Guilherme@02'
 };
 
 let empresa = {
@@ -87,7 +87,7 @@ let documento = {
     dhEmissao: moment().format(),
     ambiente: '1',
     modelo: '65',
-    numeroNota: 20343,//randomInt(2, 9999),
+    numeroNota: 20348,//randomInt(2, 9999),
     serie: '20',
     naturezaOperacao: 'VENDA',
     tipoDocumentoFiscal: '1',
@@ -144,13 +144,13 @@ let dest = {
     }
 };
 
-let destNFCe  =
+let destNFCe = 
 {
     indicadorIEDestinario: '9',
-    documento: '07605836000169',
-    inscricaoEstadual: '',
-    nome: 'Sanuvitas Laboratorios LTDA',//'Aprimorar Suporte e Teleatendimento LTDA',
-    email: '',
+    documento: '00766492028',
+    //inscricaoEstadual: '',
+    //nome: 'Sanuvitas Laboratorios LTDA',//'Aprimorar Suporte e Teleatendimento LTDA',
+    //email: '',
     isEstrangeiro: false,
     endereco: null,
     //  {
@@ -189,19 +189,19 @@ let valorTotalST = 0;
 produtos.push({
     prod: {
         codigo: '2',
-        cEAN: '7898633240015',
-        descricao: 'Sanduiche Croissant',
+        cEAN: 'SEM GTIN',
+        descricao: 'Chocolate Quente',
         cest: '1705100',
         NCM: '19052090',
         CFOP: '5101',
         unidadeComercial: 'UN',
         quantidadeComercial: 1,
-        valorUnitarioComercial: '19.90',
-        valorTotal: '19.90',
-        cEANTrib: '7898633240015',
+        valorUnitarioComercial: '12.00',
+        valorTotal: '12.00',
+        cEANTrib: 'SEM GTIN',
         unidadeTributavel: 'UN',
         quantidadeTributavel: 1,
-        valorUnitarioTributavel: '19.90',
+        valorUnitarioTributavel: '12.00',
         indicadorTotal: '1',
         valorFrete: '',
         valorSeguro: '',
@@ -232,97 +232,97 @@ produtos.push({
 
 });
 
-// produtos.push({
-//     prod: {
-//         codigo: '2',
-//         cEAN: '7898633240015',
-//         descricao: 'Capuccino',
-//         cest: '1705100',
-//         NCM: '19052090',
-//         CFOP: '5101',
-//         unidadeComercial: 'UN',
-//         quantidadeComercial: 1,
-//         valorUnitarioComercial: '12.00',
-//         valorTotal: '12.00',
-//         cEANTrib: '7898633240015',
-//         unidadeTributavel: 'UN',
-//         quantidadeTributavel: 1,
-//         valorUnitarioTributavel: '12.00',
-//         indicadorTotal: '1',
-//         valorFrete: '',
-//         valorSeguro: '',
-//         valorDesconto: '',
-//         valorOutro: '',
-//         numeroPedido: '',
-//         numeroItemPedido: '',
-//     },
-//     imposto: {
-//         valorAproximadoTributos: 0,
-//         icms: {
-//             CSOSN: '102',
-//             orig: '0',
-//             modBCST: 0,
-//             pMVAST: 0,
-//             pRedBCST: '',
-//             vBCST: 0,
-//             pICMSST: 0,
-//             vICMSST: 0,
-//             vBCFCPST: '',
-//             pFCPST: '',
-//             vFCPST: ''
-//         }
-//     },
-//     //infoAdicional: 'TEST',
-//     // numeroItem: i,
-//     numeroItem: 2,
+produtos.push({
+    prod: {
+        codigo: '2',
+        cEAN: '7898633240015',
+        descricao: 'Pao Queijo',
+        cest: '1705100',
+        NCM: '19052090',
+        CFOP: '5101',
+        unidadeComercial: 'UN',
+        quantidadeComercial: 1,
+        valorUnitarioComercial: '7.00',
+        valorTotal: '7.00',
+        cEANTrib: '7898633240015',
+        unidadeTributavel: 'UN',
+        quantidadeTributavel: 1,
+        valorUnitarioTributavel: '7.00',
+        indicadorTotal: '1',
+        valorFrete: '',
+        valorSeguro: '',
+        valorDesconto: '',
+        valorOutro: '',
+        numeroPedido: '',
+        numeroItemPedido: '',
+    },
+    imposto: {
+        valorAproximadoTributos: 0,
+        icms: {
+            CSOSN: '102',
+            orig: '0',
+            modBCST: 0,
+            pMVAST: 0,
+            pRedBCST: '',
+            vBCST: 0,
+            pICMSST: 0,
+            vICMSST: 0,
+            vBCFCPST: '',
+            pFCPST: '',
+            vFCPST: ''
+        }
+    },
+    //infoAdicional: 'TEST',
+    // numeroItem: i,
+    numeroItem: 2,
 
-// });
+});
 
-// produtos.push({
-//     prod: {
-//         codigo: '1',
-//         cEAN: '7898633240015',
-//         descricao: 'Misto Quente',
-//         cest: '1705100',
-//         NCM: '19052090',
-//         CFOP: '5101',
-//         unidadeComercial: 'UN',
-//         quantidadeComercial: 2,
-//         valorUnitarioComercial: '15.00',
-//         valorTotal: '30.00',
-//         cEANTrib: '7898633240015',
-//         unidadeTributavel: 'UN',
-//         quantidadeTributavel: 2,
-//         valorUnitarioTributavel: '15.00',
-//         indicadorTotal: '1',
-//         valorFrete: '',
-//         valorSeguro: '',
-//         valorDesconto: '',
-//         valorOutro: '',
-//         numeroPedido: '',
-//         numeroItemPedido: '',
-//     },
-//     imposto: {
-//         valorAproximadoTributos: 0,
-//         icms: {
-//             CSOSN: '102',
-//             orig: '0',
-//             modBCST: 0,
-//             pMVAST: 0,
-//             pRedBCST: '',
-//             vBCST: 0,
-//             pICMSST: 0,
-//             vICMSST: 0,
-//             vBCFCPST: '',
-//             pFCPST: '',
-//             vFCPST: ''
-//         }
-//     },
-//     //infoAdicional: 'TEST',
-//     // numeroItem: i,
-//     numeroItem: 2,
+produtos.push({
+    prod: {
+        codigo: '1',
+        cEAN: '7898633240015',
+        descricao: 'Assado Frango',
+        cest: '1705100',
+        NCM: '19052090',
+        CFOP: '5101',
+        unidadeComercial: 'UN',
+        quantidadeComercial: 1,
+        valorUnitarioComercial: '10.00',
+        valorTotal: '10.00',
+        cEANTrib: '7898633240015',
+        unidadeTributavel: 'UN',
+        quantidadeTributavel: 1,
+        valorUnitarioTributavel: '10.00',
+        indicadorTotal: '1',
+        valorFrete: '',
+        valorSeguro: '',
+        valorDesconto: '',
+        valorOutro: '',
+        numeroPedido: '',
+        numeroItemPedido: '',
+    },
+    imposto: {
+        valorAproximadoTributos: 0,
+        icms: {
+            CSOSN: '102',
+            orig: '0',
+            modBCST: 0,
+            pMVAST: 0,
+            pRedBCST: '',
+            vBCST: 0,
+            pICMSST: 0,
+            vICMSST: 0,
+            vBCFCPST: '',
+            pFCPST: '',
+            vFCPST: ''
+        }
+    },
+    //infoAdicional: 'TEST',
+    // numeroItem: i,
+    numeroItem: 2,
 
-// });
+});
 
 // produtos.push({
 //     prod: {
@@ -508,67 +508,21 @@ produtos.push({
 
 // });
 
-produtos.push({
-    prod: {
-        codigo: '2',
-        cEAN: '7898633240015',
-        descricao: 'Soda Italiana',
-        cest: '1705100',
-        NCM: '19052090',
-        CFOP: '5101',
-        unidadeComercial: 'UN',
-        quantidadeComercial: 1,
-        valorUnitarioComercial: '15.00',
-        valorTotal: '15.00',
-        cEANTrib: '7898633240015',
-        unidadeTributavel: 'UN',
-        quantidadeTributavel: 1,
-        valorUnitarioTributavel: '15.00',
-        indicadorTotal: '1',
-        valorFrete: '',
-        valorSeguro: '',
-        valorDesconto: '',
-        valorOutro: '',
-        numeroPedido: '',
-        numeroItemPedido: '',
-    },
-    imposto: {
-        valorAproximadoTributos: 0,
-        icms: {
-            CSOSN: '102',
-            orig: '0',
-            modBCST: 0,
-            pMVAST: 0,
-            pRedBCST: '',
-            vBCST: 0,
-            pICMSST: 0,
-            vICMSST: 0,
-            vBCFCPST: '',
-            pFCPST: '',
-            vFCPST: ''
-        }
-    },
-    //infoAdicional: 'TEST',
-    // numeroItem: i,
-    numeroItem: 2,
-
-});
-
 // produtos.push({
 //     prod: {
-//         codigo: '3',
-//         cEAN: '7898633240015',
-//         descricao: 'Latte G',
+//         codigo: '2',
+//         cEAN: 'SEM GTIN',
+//         descricao: 'Cupcake',
 //         cest: '1705100',
 //         NCM: '19052090',
 //         CFOP: '5101',
 //         unidadeComercial: 'UN',
-//         quantidadeComercial: 2,
+//         quantidadeComercial: 3,
 //         valorUnitarioComercial: '8.00',
-//         valorTotal: '16.00',
-//         cEANTrib: '7898633240015',
+//         valorTotal: '24.00',
+//         cEANTrib: 'SEM GTIN',
 //         unidadeTributavel: 'UN',
-//         quantidadeTributavel: 2,
+//         quantidadeTributavel: 3,
 //         valorUnitarioTributavel: '8.00',
 //         indicadorTotal: '1',
 //         valorFrete: '',
@@ -596,25 +550,25 @@ produtos.push({
 //     },
 //     //infoAdicional: 'TEST',
 //     // numeroItem: i,
-//     numeroItem: 3,
+//     numeroItem: 2,
 
 // });
 
 // produtos.push({
 //     prod: {
 //         codigo: '3',
-//         cEAN: '7898633240015',
-//         descricao: 'Latte P',
+//         cEAN: 'SEM GTIN',
+//         descricao: 'Latte Pequeno',
 //         cest: '1705100',
 //         NCM: '19052090',
 //         CFOP: '5101',
 //         unidadeComercial: 'UN',
-//         quantidadeComercial: 1,
+//         quantidadeComercial: 3,
 //         valorUnitarioComercial: '7.00',
-//         valorTotal: '7.00',
-//         cEANTrib: '7898633240015',
+//         valorTotal: '21.00',
+//         cEANTrib: 'SEM GTIN',
 //         unidadeTributavel: 'UN',
-//         quantidadeTributavel: 1,
+//         quantidadeTributavel: 3,
 //         valorUnitarioTributavel: '7.00',
 //         indicadorTotal: '1',
 //         valorFrete: '',
@@ -646,68 +600,22 @@ produtos.push({
 
 // });
 
-produtos.push({
-    prod: {
-        codigo: '3',
-        cEAN: '7898633240015',
-        descricao: 'Agua com Gas',
-        cest: '1705100',
-        NCM: '19052090',
-        CFOP: '5101',
-        unidadeComercial: 'UN',
-        quantidadeComercial: 1,
-        valorUnitarioComercial: '5.00',
-        valorTotal: '5.00',
-        cEANTrib: '7898633240015',
-        unidadeTributavel: 'UN',
-        quantidadeTributavel: 1,
-        valorUnitarioTributavel: '5.00',
-        indicadorTotal: '1',
-        valorFrete: '',
-        valorSeguro: '',
-        valorDesconto: '',
-        valorOutro: '',
-        numeroPedido: '',
-        numeroItemPedido: '',
-    },
-    imposto: {
-        valorAproximadoTributos: 0,
-        icms: {
-            CSOSN: '102',
-            orig: '0',
-            modBCST: 0,
-            pMVAST: 0,
-            pRedBCST: '',
-            vBCST: 0,
-            pICMSST: 0,
-            vICMSST: 0,
-            vBCFCPST: '',
-            pFCPST: '',
-            vFCPST: ''
-        }
-    },
-    //infoAdicional: 'TEST',
-    // numeroItem: i,
-    numeroItem: 3,
-
-});
-
 // produtos.push({
 //     prod: {
 //         codigo: '3',
-//         cEAN: '7898633240015',
-//         descricao: 'Agua Mineral com Gas',
+//         cEAN: 'SEM GTIN',
+//         descricao: 'Espresso Grande',
 //         cest: '1705100',
 //         NCM: '19052090',
 //         CFOP: '5101',
 //         unidadeComercial: 'UN',
 //         quantidadeComercial: 1,
-//         valorUnitarioComercial: 5,
-//         valorTotal: 5,
-//         cEANTrib: '7898633240015',
+//         valorUnitarioComercial: '6.00',
+//         valorTotal: '6.00',
+//         cEANTrib: 'SEM GTIN',
 //         unidadeTributavel: 'UN',
 //         quantidadeTributavel: 1,
-//         valorUnitarioTributavel: 5,
+//         valorUnitarioTributavel: '6.00',
 //         indicadorTotal: '1',
 //         valorFrete: '',
 //         valorSeguro: '',
@@ -741,8 +649,100 @@ produtos.push({
 // produtos.push({
 //     prod: {
 //         codigo: '3',
-//         cEAN: '7898633240015',
-//         descricao: 'Capuccino',
+//         cEAN: 'SEM GTIN',
+//         descricao: 'Agua sem Gas',
+//         cest: '1705100',
+//         NCM: '19052090',
+//         CFOP: '5101',
+//         unidadeComercial: 'UN',
+//         quantidadeComercial: 1,
+//         valorUnitarioComercial: '5.00',
+//         valorTotal: '5.00',
+//         cEANTrib: 'SEM GTIN',
+//         unidadeTributavel: 'UN',
+//         quantidadeTributavel: 1,
+//         valorUnitarioTributavel: '5.00',
+//         indicadorTotal: '1',
+//         valorFrete: '',
+//         valorSeguro: '',
+//         valorDesconto: '',
+//         valorOutro: '',
+//         numeroPedido: '',
+//         numeroItemPedido: '',
+//     },
+//     imposto: {
+//         valorAproximadoTributos: 0,
+//         icms: {
+//             CSOSN: '102',
+//             orig: '0',
+//             modBCST: 0,
+//             pMVAST: 0,
+//             pRedBCST: '',
+//             vBCST: 0,
+//             pICMSST: 0,
+//             vICMSST: 0,
+//             vBCFCPST: '',
+//             pFCPST: '',
+//             vFCPST: ''
+//         }
+//     },
+//     //infoAdicional: 'TEST',
+//     // numeroItem: i,
+//     numeroItem: 3,
+
+// });
+
+// produtos.push({
+//     prod: {
+//         codigo: '3',
+//         cEAN: 'SEM GTIN',
+//         descricao: 'Trio Confeitado Brownie',
+//         cest: '1705100',
+//         NCM: '19052090',
+//         CFOP: '5101',
+//         unidadeComercial: 'UN',
+//         quantidadeComercial: 1,
+//         valorUnitarioComercial: '34.90',
+//         valorTotal: '34.90',
+//         cEANTrib: 'SEM GTIN',
+//         unidadeTributavel: 'UN',
+//         quantidadeTributavel: 1,
+//         valorUnitarioTributavel: '34.90',
+//         indicadorTotal: '1',
+//         valorFrete: '',
+//         valorSeguro: '',
+//         valorDesconto: '',
+//         valorOutro: '',
+//         numeroPedido: '',
+//         numeroItemPedido: '',
+//     },
+//     imposto: {
+//         valorAproximadoTributos: 0,
+//         icms: {
+//             CSOSN: '102',
+//             orig: '0',
+//             modBCST: 0,
+//             pMVAST: 0,
+//             pRedBCST: '',
+//             vBCST: 0,
+//             pICMSST: 0,
+//             vICMSST: 0,
+//             vBCFCPST: '',
+//             pFCPST: '',
+//             vFCPST: ''
+//         }
+//     },
+//     //infoAdicional: 'TEST',
+//     // numeroItem: i,
+//     numeroItem: 3,
+
+// });
+
+// produtos.push({
+//     prod: {
+//         codigo: '3',
+//         cEAN: 'SEM GTIN',
+//         descricao: 'Mocaccino',
 //         cest: '1705100',
 //         NCM: '19052090',
 //         CFOP: '5101',
@@ -750,7 +750,7 @@ produtos.push({
 //         quantidadeComercial: 1,
 //         valorUnitarioComercial: 12,
 //         valorTotal: 12,
-//         cEANTrib: '7898633240015',
+//         cEANTrib: 'SEM GTIN',
 //         unidadeTributavel: 'UN',
 //         quantidadeTributavel: 1,
 //         valorUnitarioTributavel: 12,
