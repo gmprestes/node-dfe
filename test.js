@@ -2,15 +2,16 @@ const fs = require('fs');
 const lib = require('./lib');
 const signUtils = require('./lib/factory/signature');
 const XmlHelper = require('./lib/factory/xmlHelper');
+const path = require('path');
 
 // @ts-ignore: Unreachable code error
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 
 let cert = {
-    key: fs.readFileSync('./cert-papa/cert.key'),
-    pem: fs.readFileSync('./cert-papa/cert.pem'),
-    pfx: fs.readFileSync('./cert-papa/cert.pfx'),
-    password: '142536'
+    // key: fs.readFileSync('./cert-papa/cert.key'),
+    // pem: fs.readFileSync('./cert-papa/cert.pem'),
+    // pfx: fs.readFileSync('./cert-papa/cert.pfx'),
+    // password: '142536'
 };
 
 cert2 = {
@@ -87,7 +88,7 @@ let documento = {
     dhEmissao: moment().format(),
     ambiente: '1',
     modelo: '65',
-    numeroNota: 20348,//randomInt(2, 9999),
+    numeroNota: 20349,//randomInt(2, 9999),
     serie: '20',
     naturezaOperacao: 'VENDA',
     tipoDocumentoFiscal: '1',
@@ -190,18 +191,18 @@ produtos.push({
     prod: {
         codigo: '2',
         cEAN: 'SEM GTIN',
-        descricao: 'Chocolate Quente',
+        descricao: 'Latte G',
         cest: '1705100',
         NCM: '19052090',
         CFOP: '5101',
         unidadeComercial: 'UN',
-        quantidadeComercial: 1,
-        valorUnitarioComercial: '12.00',
-        valorTotal: '12.00',
+        quantidadeComercial: 2,
+        valorUnitarioComercial: '8.00',
+        valorTotal: '16.00',
         cEANTrib: 'SEM GTIN',
         unidadeTributavel: 'UN',
-        quantidadeTributavel: 1,
-        valorUnitarioTributavel: '12.00',
+        quantidadeTributavel: 2,
+        valorUnitarioTributavel: '8.00',
         indicadorTotal: '1',
         valorFrete: '',
         valorSeguro: '',
@@ -236,18 +237,18 @@ produtos.push({
     prod: {
         codigo: '2',
         cEAN: '7898633240015',
-        descricao: 'Pao Queijo',
+        descricao: 'Croissant Frango c/ Requeijao',
         cest: '1705100',
         NCM: '19052090',
         CFOP: '5101',
         unidadeComercial: 'UN',
-        quantidadeComercial: 1,
-        valorUnitarioComercial: '7.00',
-        valorTotal: '7.00',
+        quantidadeComercial: 2,
+        valorUnitarioComercial: '16.00',
+        valorTotal: '32.00',
         cEANTrib: '7898633240015',
         unidadeTributavel: 'UN',
-        quantidadeTributavel: 1,
-        valorUnitarioTributavel: '7.00',
+        quantidadeTributavel: 2,
+        valorUnitarioTributavel: '16.00',
         indicadorTotal: '1',
         valorFrete: '',
         valorSeguro: '',
@@ -278,51 +279,51 @@ produtos.push({
 
 });
 
-produtos.push({
-    prod: {
-        codigo: '1',
-        cEAN: '7898633240015',
-        descricao: 'Assado Frango',
-        cest: '1705100',
-        NCM: '19052090',
-        CFOP: '5101',
-        unidadeComercial: 'UN',
-        quantidadeComercial: 1,
-        valorUnitarioComercial: '10.00',
-        valorTotal: '10.00',
-        cEANTrib: '7898633240015',
-        unidadeTributavel: 'UN',
-        quantidadeTributavel: 1,
-        valorUnitarioTributavel: '10.00',
-        indicadorTotal: '1',
-        valorFrete: '',
-        valorSeguro: '',
-        valorDesconto: '',
-        valorOutro: '',
-        numeroPedido: '',
-        numeroItemPedido: '',
-    },
-    imposto: {
-        valorAproximadoTributos: 0,
-        icms: {
-            CSOSN: '102',
-            orig: '0',
-            modBCST: 0,
-            pMVAST: 0,
-            pRedBCST: '',
-            vBCST: 0,
-            pICMSST: 0,
-            vICMSST: 0,
-            vBCFCPST: '',
-            pFCPST: '',
-            vFCPST: ''
-        }
-    },
-    //infoAdicional: 'TEST',
-    // numeroItem: i,
-    numeroItem: 2,
+// produtos.push({
+//     prod: {
+//         codigo: '1',
+//         cEAN: '7898633240015',
+//         descricao: 'Assado Frango',
+//         cest: '1705100',
+//         NCM: '19052090',
+//         CFOP: '5101',
+//         unidadeComercial: 'UN',
+//         quantidadeComercial: 1,
+//         valorUnitarioComercial: '10.00',
+//         valorTotal: '10.00',
+//         cEANTrib: '7898633240015',
+//         unidadeTributavel: 'UN',
+//         quantidadeTributavel: 1,
+//         valorUnitarioTributavel: '10.00',
+//         indicadorTotal: '1',
+//         valorFrete: '',
+//         valorSeguro: '',
+//         valorDesconto: '',
+//         valorOutro: '',
+//         numeroPedido: '',
+//         numeroItemPedido: '',
+//     },
+//     imposto: {
+//         valorAproximadoTributos: 0,
+//         icms: {
+//             CSOSN: '102',
+//             orig: '0',
+//             modBCST: 0,
+//             pMVAST: 0,
+//             pRedBCST: '',
+//             vBCST: 0,
+//             pICMSST: 0,
+//             vICMSST: 0,
+//             vBCFCPST: '',
+//             pFCPST: '',
+//             vFCPST: ''
+//         }
+//     },
+//     //infoAdicional: 'TEST',
+//     // numeroItem: i,
+//     numeroItem: 2,
 
-});
+// });
 
 // produtos.push({
 //     prod: {
@@ -976,7 +977,25 @@ let nfce = {
 };
 
 async function testeEmissaoNFCe() {
-    const nfeProc = new lib.NFeProcessor(empresa, null);
+    
+    const configuracoes = {
+        empresa,
+        certificado: cert2,
+        geral: {
+            ambiente: '2',
+            modelo: '55',
+            versao: '4.00'
+        },
+        arquivos: {
+            salvar: true,
+            pastaEnvio: path.join(__dirname, 'xml_envio'),
+            pastaRetorno: path.join(__dirname, 'xml_retorno'),
+            pastaXML: path.join(__dirname, 'xml'),
+        }
+    }
+
+
+    const nfeProc = new lib.NFeProcessor(configuracoes);
 
     const ini = new Date();
     let result = await nfeProc.processarDocumento(nfce);
