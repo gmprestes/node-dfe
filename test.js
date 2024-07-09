@@ -88,7 +88,7 @@ let documento = {
     dhEmissao: moment().format(),
     ambiente: '1',
     modelo: '65',
-    numeroNota: 20349,//randomInt(2, 9999),
+    numeroNota: 20351,//randomInt(2, 9999),
     serie: '20',
     naturezaOperacao: 'VENDA',
     tipoDocumentoFiscal: '1',
@@ -148,7 +148,7 @@ let dest = {
 let destNFCe = 
 {
     indicadorIEDestinario: '9',
-    documento: '00766492028',
+    documento: '21989494072',
     //inscricaoEstadual: '',
     //nome: 'Sanuvitas Laboratorios LTDA',//'Aprimorar Suporte e Teleatendimento LTDA',
     //email: '',
@@ -191,18 +191,18 @@ produtos.push({
     prod: {
         codigo: '2',
         cEAN: 'SEM GTIN',
-        descricao: 'Latte G',
+        descricao: 'Carioca P',
         cest: '1705100',
         NCM: '19052090',
         CFOP: '5101',
         unidadeComercial: 'UN',
         quantidadeComercial: 2,
-        valorUnitarioComercial: '8.00',
-        valorTotal: '16.00',
+        valorUnitarioComercial: '5.00',
+        valorTotal: '10.00',
         cEANTrib: 'SEM GTIN',
         unidadeTributavel: 'UN',
         quantidadeTributavel: 2,
-        valorUnitarioTributavel: '8.00',
+        valorUnitarioTributavel: '5.00',
         indicadorTotal: '1',
         valorFrete: '',
         valorSeguro: '',
@@ -237,18 +237,18 @@ produtos.push({
     prod: {
         codigo: '2',
         cEAN: '7898633240015',
-        descricao: 'Croissant Frango c/ Requeijao',
+        descricao: 'Arabe',
         cest: '1705100',
         NCM: '19052090',
         CFOP: '5101',
         unidadeComercial: 'UN',
-        quantidadeComercial: 2,
-        valorUnitarioComercial: '16.00',
-        valorTotal: '32.00',
+        quantidadeComercial: 1,
+        valorUnitarioComercial: '7.50',
+        valorTotal: '7.50',
         cEANTrib: '7898633240015',
         unidadeTributavel: 'UN',
-        quantidadeTributavel: 2,
-        valorUnitarioTributavel: '16.00',
+        quantidadeTributavel: 1,
+        valorUnitarioTributavel: '7.50',
         indicadorTotal: '1',
         valorFrete: '',
         valorSeguro: '',
@@ -976,23 +976,25 @@ let nfce = {
     infoAdicional: infoAdic
 };
 
+const configuracoes = {
+    empresa,
+    certificado: cert2,
+    geral: {
+        ambiente: '1', // prod
+        modelo: '65',
+        versao: '4.00'
+    },
+    arquivos: {
+        salvar: true,
+        pastaEnvio: path.join(__dirname, 'xml_envio'),
+        pastaRetorno: path.join(__dirname, 'xml_retorno'),
+        pastaXML: path.join(__dirname, 'xml'),
+    }
+}
+
 async function testeEmissaoNFCe() {
     
-    const configuracoes = {
-        empresa,
-        certificado: cert2,
-        geral: {
-            ambiente: '2',
-            modelo: '55',
-            versao: '4.00'
-        },
-        arquivos: {
-            salvar: true,
-            pastaEnvio: path.join(__dirname, 'xml_envio'),
-            pastaRetorno: path.join(__dirname, 'xml_retorno'),
-            pastaXML: path.join(__dirname, 'xml'),
-        }
-    }
+    
 
 
     const nfeProc = new lib.NFeProcessor(configuracoes);
@@ -1115,6 +1117,30 @@ function testHashRespTec() {
     console.log(nfeProc.gerarHashCSRT('41180678393592000146558900000006041028190697', 'G8063VRTNDMO886SFNK5LDUDEI24XJ22YIPO'));
 }
 
+async function testeEventoCancelar() {
+    const evento = {   
+        chNFCe: '43240727003626000108650200000203491513575100',
+        dhEvento: moment().format(),
+        tpEvento: '110111',
+        nSeqEvento: 1,
+        detEvento: {
+            nProt:'243240400892440',
+            xJust: 'CANCELAMENTO DA NFCE'
+        }
+    }
+
+    const eventoProc = new lib.EventoProcessor(configuracoes);
+
+    const ini = new Date();
+    let result = await eventoProc.executar(evento);
+    const fin = new Date();
+    console.log(`${(fin.getTime() - ini.getTime())/1000}s`)
+
+    result = require('util').inspect(result, false, null);
+    console.log('Resultado Cancelamento NF-e: \n\n' + result);
+}
+
+
 //testeAssinaturaXML();
 //testeConsultaStatusServico(empresa, '2', '65');
 
@@ -1122,6 +1148,7 @@ function testHashRespTec() {
 
 //testeDesereliaze();
 testeEmissaoNFCe();
+//testeEventoCancelar();
 //testeEmissaoNFe();
 
 //testeEmissaoNFCeContingenciaOffline(empresa);
